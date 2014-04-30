@@ -9,11 +9,52 @@ var db = mysql.createPool({
  });
 
  var CRUD = require('mysql-crud');
-
+ var stateCrud=CRUD(db, 'tbl_state');
+ 
  exports.findAllstate = function(req, res) {
- 	  CRUD(db, 'tbl_state').load({}, function (err, val) {	   	  	
+ 	  stateCrud.load({}, function (err, val) {	   	  	
  	  	res.jsonp(val);
  	  });  
  }; 
  
+ /******************for create new state it inster value in to data base*****************/ 
  
+ // exports.createNewState = function(req, res) {
+  // stateCrud.create({'state_name' :'India','country_id' : 3}, function (err, vals) {
+  	// console.log(vals.affectedRows);
+       // });
+    // };
+     
+ /******************  End create *****************/
+
+
+
+/******************for  delete data from  data base*****************/
+
+exports.deleteState = function(req, res) {
+	var state_id=parseInt(req.params.id);
+  stateCrud.destroy({'state_id' : state_id}, function (err, vals) {
+  	console.log(vals.affectedRows);
+  	if(parseInt(vals.affectedRows)>0){
+  		var resdata={status:true,
+  		      message:'municipality successfully deleted'};
+	  	res.jsonp(resdata);
+	  	}else{
+	  		 var resdata={status:false,
+  		      message:'record not found '};
+	  	      res.jsonp(resdata);
+	  	     }
+      });
+   };
+   
+ /******************  End Delete *****************/
+
+/******************for  update data in data base********/
+
+//exports.updateState = function(req, res) {
+  //stateCrud.update({'state_id' : 3}, {state_name:'ganrdan town'}, function (err, vals) {
+  	//console.log(vals);
+      //});
+  //  };
+  
+/******************  End Update *****************/

@@ -1,7 +1,7 @@
 var express = require('express'), path = require('path');
 var app = express();
 
-employees = require('./api/employee');
+//employees = require('./api/employee');
 product = require('./api/product');
 vendor = require('./api/vendor');
 state = require('./api/state');
@@ -20,8 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.get('/api/vendors', vendor.findAll);
 // app.get('/api/vendors/:id', vendor.findById);
 app.get('/api/state', state.findAllstate);
+app.get('/api/deleteState/:id', state.deleteState);
 app.get('/api/municipality/:id', municipality.findMunicipality);
+app.get('/api/deleteMunicipality/:id', municipality.deleteMunicipality);
 app.get('/api/housingAssociation/:id', housingAssociation.findHousinnAss);
+app.get('/api/deleteHousingAss/:id', housingAssociation.deleteHousingAss);
 
 app.listen(3000);
 console.log('Listening on port 3000...'); 
