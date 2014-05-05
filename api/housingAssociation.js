@@ -21,12 +21,20 @@ var db = mysql.createPool({
 
 /******************for create new municipality it inster value in to data base*****************/ 
  
- // exports.createNewHousingAss = function(req, res) {
-  //housingAssociationCRUD.create({'housing_ass_name' :'Rissing satr','country_id' : 3,'m_id' : 3,'address' :'gulberg lahore','building_password' :'123',
- // 'telephone_no' :'03347268737','emergency_contact':'063225454','email' :'shahzad@fortsolution.com'}, function (err, vals) {
-  	//console.log(vals);
-     //});
-    // };
+ exports.createNewHousingAss = function(req, res) {
+  housingAssociationCRUD.create({'housing_ass_name' :'Rissing satr','country_id' : 3,'m_id' : 3,'address' :'gulberg lahore','building_password' :'123',
+ 'telephone_no' :'03347268737','emergency_contact':'063225454','email' :'shahzad@fortsolution.com'}, function (err, vals) {
+  if(parseInt(vals.affectedRows)>0){
+  		var resdata={status:true,
+  		      message:'housing association successfully added'};
+	  	res.jsonp(resdata);
+	  	}else{
+	  		 var resdata={status:false,
+  		      message:'record not added '};
+	  	      res.jsonp(resdata);
+	  	     }
+     });
+    };
      
  /******************  End create *****************/
 
@@ -54,10 +62,19 @@ housingAssociationCRUD.destroy({'housing_ass_id' : housing_ass_id}, function (er
 
 /******************for  update data in data base********/
 
-//exports.updateHousingAss = function(req, res) {
- //housingAssociationCRUD.update({'housing_ass_id' : 1}, {building_password:'shahzad1234'}, function (err, vals) {
-  	//console.log(vals);
-      //});
-  //  };
+exports.updateHousingAss = function(req, res) {
+	var id=parseInt(req.params.id);
+ housingAssociationCRUD.update({'housing_ass_id' : id}, {building_password:'shahzad1234'}, function (err, vals) {
+if(parseInt(vals.affectedRows)>0){
+  		var resdata={status:true,
+  		      message:'housing association successfully updated'};
+	  	res.jsonp(resdata);
+	  	}else{
+	  		 var resdata={status:false,
+  		      message:'record not updated '};
+	  	      res.jsonp(resdata);
+	  	     }
+      });
+   };
   
 /******************  End Update *****************/

@@ -8,11 +8,11 @@ var db = mysql.createPool({
  });
  var CRUD = require('mysql-crud');
  exports.login = function(req, res) {
- 	var name = parseInt(req.params.name);
- 	var password = parseInt(req.params.password);
+ 	var name='shahzad housing asso';
+ 	var password='shahzad1234'; 
  	 	 	
- 	  CRUD(db, 'tbl_housing_association').load({m_name : name,building_password : password }, function (err, val) {	
- 	  	console.log(val.length);
+ 	  CRUD(db, 'tbl_housing_association').load({housing_ass_name : name,building_password : password }, function (err, val) {	
+ 
  	  	var resdata={
  	  		status:false,
  	  		message :'err'

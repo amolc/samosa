@@ -9,12 +9,14 @@ function housingcontroller($rootScope,$scope, $location, $http, $routeParams) {
 					alert(res.message);
 				} else {
 					console.log(res);
-					$scope.housingass=res;
-					
-				}
-				
+					$scope.housingass=res;					
+				}				
 			}).error(function() {
 				alert("Please check your internet connection or data source..");
 			});
+			$scope.goto=function(){
+	
+$location.path("/Login");
+};
 
 }

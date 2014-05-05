@@ -19,11 +19,19 @@ var db = mysql.createPool({
  
  /******************for create new state it inster value in to data base*****************/ 
  
- // exports.createNewState = function(req, res) {
-  // stateCrud.create({'state_name' :'India','country_id' : 3}, function (err, vals) {
-  	// console.log(vals.affectedRows);
-       // });
-    // };
+ exports.createNewState = function(req, res) {
+  stateCrud.create({'state_name' :'India','country_id' : 3}, function (err, vals) {
+  	if(parseInt(vals.affectedRows)>0){
+  		var resdata={status:true,
+  		      message:'state successfully added'};
+	  	res.jsonp(resdata);
+	  	}else{
+	  		 var resdata={status:false,
+  		      message:'record not added '};
+	  	      res.jsonp(resdata);
+	  	     }
+       });
+    };
      
  /******************  End create *****************/
 
@@ -37,7 +45,7 @@ exports.deleteState = function(req, res) {
   	console.log(vals.affectedRows);
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
-  		      message:'municipality successfully deleted'};
+  		      message:'state successfully deleted'};
 	  	res.jsonp(resdata);
 	  	}else{
 	  		 var resdata={status:false,
@@ -51,10 +59,18 @@ exports.deleteState = function(req, res) {
 
 /******************for  update data in data base********/
 
-//exports.updateState = function(req, res) {
-  //stateCrud.update({'state_id' : 3}, {state_name:'ganrdan town'}, function (err, vals) {
-  	//console.log(vals);
-      //});
-  //  };
+ exports.updateState = function(req, res) {
+  stateCrud.update({'state_id' : 3}, {state_name:'ganrdan town'}, function (err, vals) {
+  	if(parseInt(vals.affectedRows)>0){
+  		var resdata={status:true,
+  		      message:'state successfully updated'};
+	  	res.jsonp(resdata);
+	  	}else{
+	  		 var resdata={status:false,
+  		      message:'record not updated'};
+	  	      res.jsonp(resdata);
+	  	     }
+      });
+   };
   
 /******************  End Update *****************/

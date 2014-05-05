@@ -15,6 +15,7 @@ config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/State'});
     $routeProvider.when('/Municipality/:id', {templateUrl: 'partials/municipality.html'});
     $routeProvider.when('/Housing/:id', {templateUrl: 'partials/housingass.html'});
+    $routeProvider.when('/Login', {templateUrl: 'partials/login.html',controller: 'loginController'});
 
     // $routeProvider.when('/AkmalPage', {templateUrl: 'partials/AkmalPage.html'});
     // $routeProvider.when('/amir', {templateUrl: 'partials/value.html'});
