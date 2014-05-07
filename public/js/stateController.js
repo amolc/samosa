@@ -1,6 +1,5 @@
 
 function stateController($rootScope,$scope, $location, $http) {
-	alert('ok controller');
 	$scope.states = {};
 	$scope.muncp= {};
 		$http.get(baseURL + 'state').success(function(res) {

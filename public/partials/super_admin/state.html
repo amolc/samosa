@@ -1,0 +1,44 @@
+<div ng-controller="adminstateController">
+	<h1 style="text-align: center">Adman panal of state </h1>
+	<table class="table table-bordered table-striped datatable" id="table-2">
+	<thead>
+		<tr>
+			<th>
+				<div class="checkbox checkbox-replace">
+					<input type="checkbox" id="chk-1">
+				</div>
+			</th>
+			<th>State name</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="state in states">
+			<td>
+				<div class="checkbox checkbox-replace">
+					<input type="checkbox" id="chk-1">
+				</div>
+			</td>
+		
+			<td>{{state.state_name}}</td>	
+			<td>
+				<a href="" class="btn btn-default btn-sm btn-icon icon-left">
+					<i class="entypo-pencil"></i>
+					Edit
+				</a>
+				
+				<a href="#" class="btn btn-danger btn-sm btn-icon icon-left" ng-click='del({{state.state_id}})'>
+					<i class="entypo-cancel"></i>
+					Delete
+				</a>
+				
+				<a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+					<i class="entypo-info"></i>
+					Update
+				</a>
+			</td>
+		</tr>
+		</tbody>
+</table>
+</div>
