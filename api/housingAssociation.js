@@ -3,8 +3,8 @@ var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
 	database : 'icefire',
-     user : 'root',
-	password : '',
+     user : 'icefire',
+	password : 'ferrari4321',
     host :'localhost',
  });
 
@@ -12,9 +12,10 @@ var db = mysql.createPool({
  var housingAssociationCRUD=CRUD(db, 'tbl_housing_association');
  exports.findHousinnAss = function(req, res) {
  	var id = parseInt(req.params.id);
- 	  housingAssociationCRUD.load({m_id : id}, function (err, val) {	  
+ 	  housingAssociationCRUD.load({}, function (err, val) {	 
+ 	  	console.log(err); 
  	  	res.jsonp(val);
- 	  });
+ 	  },{'ORDER BY' :'housing_ass_name'});
  	    
  }; 
  
@@ -46,7 +47,7 @@ exports.deleteHousingAss = function(req, res) {
 	var housing_ass_id=parseInt(req.params.id);
 housingAssociationCRUD.destroy({'housing_ass_id' : housing_ass_id}, function (err, vals) {
   	if(parseInt(vals.affectedRows)>0){
-  		var resdata={status:true,
+  		      var resdata={status:true,
   		      message:'housing association successfully deleted'};
 	  	res.jsonp(resdata);
 	  	}else{
@@ -78,3 +79,20 @@ if(parseInt(vals.affectedRows)>0){
    };
   
 /******************  End Update *****************/
+
+exports.abc = function(req, res) {
+	 var query = "SELECT * FROM tbl_housing_association order by `housing_ass_name` ";
+db.query(query, function(err, rows){
+	console.log(rows);
+	if(rows.length>0)
+	{
+		var resdata={
+			status:true,
+			message:'success',
+			norows:rows
+			
+		};
+		res.jsonp(resdata);
+	}
+   });
+ };

@@ -32,6 +32,8 @@ app.get('/api/addMunicipality', municipality.createNewMunicipality);
 app.get('/api/deleteMunicipality/:id', municipality.deleteMunicipality);
 app.get('/api/updateMunicipality/:id', municipality.updateMunicipality);
 app.get('/api/housingAssociation/:id', housingAssociation.findHousinnAss);
+
+app.get('/api/abc', housingAssociation.abc);
 app.get('/api/addHousingAss', housingAssociation.createNewHousingAss);
 app.get('/api/deleteHousingAss/:id', housingAssociation.deleteHousingAss);
 app.get('/api/updateHousingAss/:id', housingAssociation.updateHousingAss);
@@ -47,5 +49,5 @@ app.get('/api/addContact', contact.AddContact);
 app.get('/api/deleteContact/:id', contact.deleteContact);
 app.get('/api/UpdateContact/:id', contact.updateContact);
 app.get('/api/submitInput', submitInput.submitInput);
-app.listen(3000);
-console.log('Listening on port 3000...'); 
+app.listen(5000);
+console.log('Listening on port 5000...'); 

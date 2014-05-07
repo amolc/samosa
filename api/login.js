@@ -2,8 +2,8 @@ var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
 	database : 'icefire',
-     user : 'root',
-	password : '',
+     user : 'icefire',
+	password : 'ferrari4321',
     host :'localhost',
  });
  var CRUD = require('mysql-crud');
@@ -19,8 +19,7 @@ var db = mysql.createPool({
  	  	};
  	  	if(val.length>0){
  	  		resdata.status=true;
- 	  		resdata.message='successfully login welcom to ..';
- 	  		
+ 	  		resdata.message='successfully login welcom to ..';  		
  	  	}else{
  	  		resdata.status=false;
  	  		resdata.message='wrong user name or password ..please enter a valid one ';

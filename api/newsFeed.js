@@ -2,8 +2,8 @@ var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
 	database : 'icefire',
-     user : 'root',
-	password : '',
+     user : 'icefire',
+	password : 'ferrari4321',
     host :'localhost',
  });
 
@@ -14,10 +14,6 @@ var db = mysql.createPool({
  	  	res.jsonp(val);
  	  },{'limit' : 5 ,'offset' :0});    
  }; 
- 
-
-
-
 var newsDetailCRUD=CRUD(db, 'tbl_category_description');
  exports.newsDetail = function(req, res) {
  	var id = parseInt(req.params.id);
