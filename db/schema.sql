@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2014 at 04:04 PM
+-- Generation Time: May 07, 2014 at 04:48 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -23,6 +23,73 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_user`
+--
+
+CREATE TABLE IF NOT EXISTS `admin_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin_user`
+--
+
+INSERT INTO `admin_user` (`id`, `name`, `password`, `email`) VALUES
+(1, 'admin', '12345', 'shahzad@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_category_description`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_category_description` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_id` int(11) NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tbl_category_description`
+--
+
+INSERT INTO `tbl_category_description` (`id`, `type_id`, `title`, `description`) VALUES
+(1, 1, 'light alert', 'no light from 5 to 9 am'),
+(2, 1, 'internet', 'no internet today night');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_contact_detail`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_contact_detail` (
+  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
+  `contact_name` varchar(20) NOT NULL,
+  `phone_no` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `web_link` varchar(20) NOT NULL,
+  `other_info` varchar(20) NOT NULL,
+  PRIMARY KEY (`contact_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `tbl_contact_detail`
+--
+
+INSERT INTO `tbl_contact_detail` (`contact_id`, `contact_name`, `phone_no`, `email`, `web_link`, `other_info`) VALUES
+(1, 'association board', '03347268737', 'shahzad@gmail.com', 'shahzad@gmail.com', 'shahzad.fortsolution'),
+(6, 'boss', '03347268737', 'shahzad@gmail', 'shahzad@fortsolution', 'all about other');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_housing_association`
 --
 
@@ -37,14 +104,16 @@ CREATE TABLE IF NOT EXISTS `tbl_housing_association` (
   `emergency_contact` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
   PRIMARY KEY (`housing_ass_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tbl_housing_association`
 --
 
 INSERT INTO `tbl_housing_association` (`housing_ass_id`, `housing_ass_name`, `country_id`, `m_id`, `address`, `building_password`, `telephone_no`, `emergency_contact`, `email`) VALUES
-(1, 'shahzad housing asso', 1, 1, 'kalm chook', '1122', '03336320987', '063224488', 'shahzad@gmail.com');
+(1, 'shahzad housing asso', 1, 1, 'kalm chook', 'shahzad1234', '03336320987', '063224488', 'shahzad@gmail.com'),
+(7, 'Rissing satr', 3, 3, 'gulberg lahore', 'shahzad1234', '03347268737', '063225454', 'shahzad@fortsolution'),
+(8, 'akmal housion associ', 1, 1, 'gulberg 3', '12345', '03456+', '063224488', 'shahzad@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -57,32 +126,38 @@ CREATE TABLE IF NOT EXISTS `tbl_municipality` (
   `m_name` varchar(20) NOT NULL,
   `state_id` int(11) NOT NULL,
   PRIMARY KEY (`m_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_municipality`
 --
 
 INSERT INTO `tbl_municipality` (`m_id`, `m_name`, `state_id`) VALUES
-(1, 'bahwalnager', 1);
+(1, 'bahwalnager', 1),
+(4, 'shahzad municipality', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_news_feed`
+-- Table structure for table `tbl_newscat`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_news_feed` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `description` varchar(250) NOT NULL,
-  `image` varchar(20) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `type_of_news` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `tbl_newscat` (
+  `type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `tbl_newscat`
+--
+
+INSERT INTO `tbl_newscat` (`type_id`, `cat_name`) VALUES
+(1, 'alert'),
+(2, 'general info'),
+(3, 'annual meeting'),
+(4, 'celebrations'),
+(5, 'other');
 
 -- --------------------------------------------------------
 
@@ -95,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `tbl_state` (
   `state_name` varchar(20) NOT NULL,
   `country_id` int(11) NOT NULL,
   PRIMARY KEY (`state_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `tbl_state`
@@ -103,8 +178,31 @@ CREATE TABLE IF NOT EXISTS `tbl_state` (
 
 INSERT INTO `tbl_state` (`state_id`, `state_name`, `country_id`) VALUES
 (1, 'united state', 1),
-(2, 'calefunia', 1),
-(3, 'pakistan2', 2);
+(16, 'Juneau	', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_submited_input`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_submited_input` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `image` varchar(20) NOT NULL,
+  `type_of_input` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_submited_input`
+--
+
+INSERT INTO `tbl_submited_input` (`id`, `name`, `email`, `phone`, `description`, `image`, `type_of_input`) VALUES
+(1, 'shahzad', 'shahzad@fortsolution', '03347268737', 'it is a description', 'image path', 'gerenal');
 
 -- --------------------------------------------------------
 
