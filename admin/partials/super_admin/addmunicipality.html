@@ -17,20 +17,20 @@
           <li> <a ng-click="showhide('inner_submenu_state')"> <i class="entypo-menu"></i><span>States</span></a> 
           	<ul id="inner_submenu_state" style="display:none;">
 		<li class="active">
-			<a href="http://localhost:3000/#/Addstate"><span>Add State</span></a>
+			<a ng-click="goto('Addstate')"><span>Add State</span></a>
 		</li>
 		<li class="active">
-			<a href="http://localhost:3000/#/Admin"><span>Manage State</span></a>
+			<a ng-click="goto('Admin')"><span>Manage State</span></a>
 		</li>
 		</ul>
           	</li>
           <li class="active"> <a href="" ng-click="showhide('inner_submenu_Muni')"> <i class="entypo-menu"></i><span>Municipalty</span></a>
           	<ul id="inner_submenu_Muni" style="display:none;">
 		<li class="active">
-			<a href="http://localhost:3000/#/Addmunicipality"><span>Add Municipalty</span></a>
+			<a ng-click="goto('Addmunicipality')"><span>Add Municipalty</span></a>
 		</li>
 		<li class="active">
-			<a href="http://localhost:3000/#/Adminmunicipality"><span>Manage Municipalty</span></a>
+			<a  ng-click="goto('Adminmunicipality')"><span>Manage Municipalty</span></a>
 		</li>
 		</ul>
           	 </li>

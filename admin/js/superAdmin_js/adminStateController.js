@@ -60,6 +60,7 @@ function adminstateController($rootScope,$scope, $location, $http) {
 			$scope.goto=function(page){
 				$location.path(page);	
 			};
+			
 			$scope.edit=function(id){
 				$location.path('/Editstate/'+id);	
 			};
@@ -114,6 +115,9 @@ function admineditstateController($rootScope,$scope, $location, $http,$routePara
 			});
 		}
 		};
+		$scope.goto=function(page){
+				$location.path(page);	
+			};
   $scope.showhide = function(id){
 	if(document.getElementById(id).style.display == 'none'){
     document.getElementById(id).style.display = 'block';

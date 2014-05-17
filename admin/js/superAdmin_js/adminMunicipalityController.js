@@ -127,6 +127,9 @@ function admineditmunController($rootScope,$scope, $location, $http,$routeParams
 			});
 		}
 		};
+		$scope.goto=function(page){
+				$location.path(page);	
+			};
   $scope.showhide = function(id){
 	if(document.getElementById(id).style.display == 'none'){
     document.getElementById(id).style.display = 'block';
