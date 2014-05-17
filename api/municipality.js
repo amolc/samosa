@@ -18,13 +18,33 @@ var db = mysql.createPool({
  	  });
  	    
  }; 
+ 
+ /******************for select all municipality *****************/
 
+  // exports.allMunicipality = function(req, res) {
+ 	  // municipalityCRUD.load({}, function (err, val) {	  
+ 	  	// res.jsonp(val);
+ 	  // });   
+ // }; 
+
+  exports.allMunicipality = function(req, res) {
+ 		 var query = "SELECT tbl_municipality.m_id , tbl_municipality.m_name , tbl_municipality.state_id , tbl_state.state_name FROM tbl_municipality INNER JOIN tbl_state ON tbl_municipality.state_id = tbl_state.state_id";
+db.query(query, function(err, rows){
+    res.jsonp(rows);
+   });
+ }; 
 
 
 /******************for create new municipality it inster value in to data base*****************/ 
  
  exports.createNewMunicipality = function(req, res) {
-  municipalityCRUD.create({'m_name' :'shahzad municipality','state_id' : 3}, function (err, vals) {
+ 	console.log(req.body);
+ 	 var munName=req.body.mun_name;
+ 	 var stateID=req.body.stateID;
+ 	 	 
+ 	console.log('name '+munName);
+ 	console.log('id'+stateID);
+  municipalityCRUD.create({'m_name' :munName,'state_id' : stateID}, function (err, vals) {
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
   		      message:'Municipality successfully added'};
@@ -64,7 +84,10 @@ exports.deleteMunicipality = function(req, res) {
 /******************for  update data in data base********/
 
 exports.updateMunicipality = function(req, res) {
- municipalityCRUD.update({'state_id' : 3}, {state_id:1}, function (err, vals) {
+	mid=req.body.m_id;
+ 	munname=req.body.m_name;
+ 	stateid=req.body.stateID;
+ municipalityCRUD.update({'m_id' : mid}, {m_name:munname,state_id:stateid}, function (err, vals) {
   if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
   		      message:'municipality successfully updated'};

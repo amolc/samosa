@@ -20,14 +20,16 @@ var db = mysql.createPool({
  /******************for create new state it inster value in to data base*****************/ 
  
  exports.createNewState = function(req, res) {
-  stateCrud.create({'state_name' :'India','country_id' : 3}, function (err, vals) {
+ 	var statename=req.body.statename;
+ 	var statelocation=req.body.statelocation;
+  stateCrud.create({'state_name' :statename,'state_location' : statelocation}, function (err, vals) {
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
   		      message:'state successfully added'};
 	  	res.jsonp(resdata);
 	  	}else{
 	  		 var resdata={status:false,
-  		      message:'record not added '};
+  		      message:'record not added some thing wrong  '};
 	  	      res.jsonp(resdata);
 	  	     }
        });
@@ -58,7 +60,10 @@ exports.deleteState = function(req, res) {
 /******************for  update data in data base********/
 
  exports.updateState = function(req, res) {
-  stateCrud.update({'state_id' : 3}, {state_name:'ganrdan town'}, function (err, vals) {
+ 	statename=req.body.state_name;
+ 	statelocation=req.body.state_location;
+ 	stateid=req.body.state_id;
+  stateCrud.update({'state_id' : stateid}, {state_name:statename,state_location:statelocation}, function (err, vals) {
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
   		      message:'state successfully updated'};

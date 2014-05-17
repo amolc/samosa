@@ -1,4 +1,6 @@
+var loginuser="";
 function adminLoginController($rootScope,$scope, $location, $http, $routeParams) {
+	$rootScope.islogin=false;
 	$scope.user = {
 		username : '',
 		password : ''
@@ -15,12 +17,26 @@ function adminLoginController($rootScope,$scope, $location, $http, $routeParams)
 				if (res.status == false) {
 					alert(res.message);
 				} else {
+					loginuser=user.username;
+					alert(loginuser);
+					$rootScope= islogin=true;
 					alert(res.message);
-					$location.path("/Adminstate");
+					$location.path("/Admin");
 				}
 			}).error(function() {
 				alert("Please check your internet connection or data source..");
 			});
 		}
 	};
+}
+
+// log out controller
+  
+
+function adminLogoutController($rootScope,$scope, $location, $http, $routeParams) {
+	$scope.logout=function(){
+     $rootScope= islogin=false;
+      $location.path('/Adminlogin');		
+	};
+ 
 }

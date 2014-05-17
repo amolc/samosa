@@ -5,6 +5,7 @@ var app = express();
 product = require('./api/product');
 vendor = require('./api/vendor');
 state = require('./api/state');
+getdetail = require('./api/getdetail');
 municipality=require('./api/municipality');
 housingAssociation=require('./api/housingAssociation');
 login=require('./api/login');
@@ -15,23 +16,17 @@ submitInput=require('./api/submitinput');
 app.use(express.bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/api/employees/:id/reports', employees.findByManager);
-// app.get('/api/employees/:id', employees.findById);
-// app.get('/api/employees', employees.findAll);
-// 
-// app.get('/api/products', product.findAll);
-// app.get('/api/products/:id', product.findById);
-// 
-// app.get('/api/vendors', vendor.findAll);
-// app.get('/api/vendors/:id', vendor.findById);
 app.get('/api/state', state.findAllstate);
-app.get('/api/addState', state.createNewState);
+app.post('/api/addState', state.createNewState);
 app.get('/api/deleteState/:id', state.deleteState);
-app.get('/api/updateState/:id', state.updateState);
+app.post('/api/updateState', state.updateState);
+app.get('/api/getdetail/:id', getdetail.statedetail);
+app.get('/api/getmundetail/:id', getdetail.municipalitydetail);
 app.get('/api/municipality/:id', municipality.findMunicipality);
-app.get('/api/addMunicipality', municipality.createNewMunicipality);
+app.get('/api/allmunicipality', municipality.allMunicipality);
+app.post('/api/addMunicipality', municipality.createNewMunicipality);
 app.get('/api/deleteMunicipality/:id', municipality.deleteMunicipality);
-app.get('/api/updateMunicipality/:id', municipality.updateMunicipality);
+app.post('/api/updateMunicipality', municipality.updateMunicipality);
 app.get('/api/housingAssociation/:id', housingAssociation.findHousinnAss);
 
 app.get('/api/abc', housingAssociation.abc);
