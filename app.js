@@ -14,7 +14,9 @@ newsFeed=require('./api/newsFeed');
 contact=require('./api/contactdetail');
 submitInput=require('./api/submitinput');
 app.use(express.bodyParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/admin', express.static(__dirname + '/admin'));
+app.use('/mobile', express.static(__dirname + '/mobile/www'));
 
 app.get('/api/state', state.findAllstate);
 app.post('/api/addState', state.createNewState);
