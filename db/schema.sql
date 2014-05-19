@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2014 at 04:48 PM
+-- Generation Time: May 19, 2014 at 04:50 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -101,19 +101,19 @@ CREATE TABLE IF NOT EXISTS `tbl_housing_association` (
   `address` varchar(20) NOT NULL,
   `building_password` varchar(20) NOT NULL,
   `telephone_no` varchar(20) NOT NULL,
-  `emergency_contact` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
   PRIMARY KEY (`housing_ass_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_housing_association`
 --
 
-INSERT INTO `tbl_housing_association` (`housing_ass_id`, `housing_ass_name`, `country_id`, `m_id`, `address`, `building_password`, `telephone_no`, `emergency_contact`, `email`) VALUES
-(1, 'shahzad housing asso', 1, 1, 'kalm chook', 'shahzad1234', '03336320987', '063224488', 'shahzad@gmail.com'),
-(7, 'Rissing satr', 3, 3, 'gulberg lahore', 'shahzad1234', '03347268737', '063225454', 'shahzad@fortsolution'),
-(8, 'akmal housion associ', 1, 1, 'gulberg 3', '12345', '03456+', '063224488', 'shahzad@gmail.com');
+INSERT INTO `tbl_housing_association` (`housing_ass_id`, `housing_ass_name`, `country_id`, `m_id`, `address`, `building_password`, `telephone_no`) VALUES
+(1, 'shahzad housing asso', 1, 1, 'kalm chook', 'shahzad1234', '03336320987'),
+(7, 'Rissing satr', 3, 3, 'gulberg lahore', 'shahzad1234', '03347268737'),
+(8, 'akmal housion associ', 1, 1, 'gulberg 3', '12345', '03456+'),
+(9, 'garden housing ass', 0, 29, 'ss', 'admin', '03224454556'),
+(10, 'shahzad housing asso', 0, 29, 'aaa', '123', '63224455');
 
 -- --------------------------------------------------------
 
@@ -126,15 +126,16 @@ CREATE TABLE IF NOT EXISTS `tbl_municipality` (
   `m_name` varchar(20) NOT NULL,
   `state_id` int(11) NOT NULL,
   PRIMARY KEY (`m_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `tbl_municipality`
 --
 
 INSERT INTO `tbl_municipality` (`m_id`, `m_name`, `state_id`) VALUES
-(1, 'bahwalnager', 1),
-(4, 'shahzad municipality', 1);
+(29, 'standard unip0n', 1),
+(30, 'bahwalnager', 22),
+(31, 'dddd', 1);
 
 -- --------------------------------------------------------
 
@@ -168,17 +169,19 @@ INSERT INTO `tbl_newscat` (`type_id`, `cat_name`) VALUES
 CREATE TABLE IF NOT EXISTS `tbl_state` (
   `state_id` int(11) NOT NULL AUTO_INCREMENT,
   `state_name` varchar(20) NOT NULL,
-  `country_id` int(11) NOT NULL,
+  `state_location` varchar(250) NOT NULL,
   PRIMARY KEY (`state_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `tbl_state`
 --
 
-INSERT INTO `tbl_state` (`state_id`, `state_name`, `country_id`) VALUES
-(1, 'united state', 1),
-(16, 'Juneau	', 1);
+INSERT INTO `tbl_state` (`state_id`, `state_name`, `state_location`) VALUES
+(1, 'united state', 'abc   ..'),
+(16, 'Juneau	', 'located in uk north'),
+(18, 'kingdom king', 'located in uk'),
+(22, 'Bahwalpur', 'located in south of punjab');
 
 -- --------------------------------------------------------
 
