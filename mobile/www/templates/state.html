@@ -1,12 +1,21 @@
  <div ng-controller="stateController">
- 	<ul class="topcoat-list list">
- 		<h1>select  your state</h1>
-		<li ng-repeat="state in states" class="topcoat-list__item">
-			 <a  href="http://localhost:3000/#/Municipality/{{state.state_id}}"> 
-			 	 <!-- <a ng-click="mun({{state.state_id}})" href="http://localhost:3000/#/Municipality/">  -->
-				{{state.state_name}}
-				</a>	
-		</li>
-		
+	<div class="bar bar-header bar-balanced">
+	  <h1 class="title">ICEFIRE</h1>
+	</div>
+	<div class="bar bar-subheader">
+	  <h2 class="title">Select state</h2>
+	</div>
+	<content has-header="true" has-subheader="true">
+		<ul class="list">
+	     <li class="item" ng-repeat="state in states">
+				 	 <a ng-click="mun({{state.state_id}})"> 
+					{{state.state_name}}
+					</a>
+	    </li>
 	</ul>
+	 </content>
+		
+	<div class="bar bar-footer bar-balanced">
+	   <div class="title">Footer</div>
+	</div>
 </div>

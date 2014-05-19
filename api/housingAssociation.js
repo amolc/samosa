@@ -12,12 +12,21 @@ var db = mysql.createPool({
  var housingAssociationCRUD=CRUD(db, 'tbl_housing_association');
  exports.findHousinnAss = function(req, res) {
  	var id = parseInt(req.params.id);
- 	  housingAssociationCRUD.load({}, function (err, val) {	 
+ 	console.log('id =='+id);
+ 	  housingAssociationCRUD.load({'m_id':id}, function (err, val) {	 
  	  	console.log(err); 
  	  	res.jsonp(val);
- 	  },{'ORDER BY' :'housing_ass_name'});
+ 	  });
  	    
  }; 
+ 
+ 
+ // exports.allHousingAss = function(req, res) {
+ 		 // var query = "SELECT tbl_municipality.m_id , tbl_municipality.m_name , tbl_municipality.state_id , tbl_state.state_name FROM tbl_municipality INNER JOIN tbl_state ON tbl_municipality.state_id = tbl_state.state_id";
+// db.query(query, function(err, rows){
+    // res.jsonp(rows);
+   // });
+ // }; 
  
 
 /******************for create new municipality it inster value in to data base*****************/ 

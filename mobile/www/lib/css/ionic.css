@@ -3201,7 +3201,7 @@ a.subdued {
 .item {
   color: #444;
   background-color: #fff;
-  border-color: #ddd;
+ border: 1px solid #DDDDDD;
   -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
   -moz-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
   transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;

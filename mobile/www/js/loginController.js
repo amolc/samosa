@@ -1,15 +1,16 @@
-function loginController($rootScope,$scope, $location, $http, $routeParams) {
+function loginController($rootScope,$scope, $location, $http, $stateParams) {
 	alert('inside the controller');
-	var hName=$scope.housingass.housing_ass_name;
-	alert('hiiiiii'.hName);
+	var hName=$stateParams.name;
 	$scope.user = {
-		username : '',
+		username :hName,
 		buildingpass : ''
 	};
+	console.log();
+	
 	$scope.login = function(user) {
-		if (user.username == '') {
-			alert('Enter valid User Name ');
-		}  else {		       
+		if (user.buildingpass == '') {
+			alert('Password required ');
+		}  else {	       
 			$http.post(baseURL + 'login', user).success(function(res) {
 				$scope.response = res;
 				console.log(res);

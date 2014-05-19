@@ -13,6 +13,7 @@ var db = mysql.createPool({
  exports.findMunicipality = function(req, res) {
 
  	var id = parseInt(req.params.id);
+ 	console.log(id);
  	  municipalityCRUD.load({state_id : id}, function (err, val) {	  
  	  	res.jsonp(val);
  	  });

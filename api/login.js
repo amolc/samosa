@@ -8,11 +8,9 @@ var db = mysql.createPool({
  });
  var CRUD = require('mysql-crud');
  exports.login = function(req, res) {
- 	var name='shahzad housing asso';
- 	var password='shahzad1234'; 
- 	 	 	
- 	  CRUD(db, 'tbl_housing_association').load({housing_ass_name : name,building_password : password }, function (err, val) {	
- 
+ 	var name=req.body.username;
+ 	var password=req.body.buildingpass; 
+ 	  CRUD(db, 'tbl_housing_association').load({housing_ass_name : name,building_password : password }, function (err, val) {	 
  	  	var resdata={
  	  		status:false,
  	  		message :'err'
@@ -27,5 +25,4 @@ var db = mysql.createPool({
  	  	  
  	  	res.jsonp(resdata);
  	  });
- 	    
  }; 

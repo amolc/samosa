@@ -1,6 +1,6 @@
-function adminmunicipalityController($rootScope,$scope, $location, $http) {
+function housingAssController($rootScope,$scope, $location, $http) {
 	 $scope.adminusername=loginuser;
-     $rootScope.munitems = [];
+     $rootScope.items = [];
 		$scope.mun={
 		 mun_name :'',
 		 stateID :''
@@ -19,7 +19,7 @@ function adminmunicipalityController($rootScope,$scope, $location, $http) {
 			}).error(function() {
 				alert("Please check your internet connection or data source..");
 			});
-			//for getting municipality and their id to insert in add municipality
+			//for getting state and their d to insert in add municipality
 			$http.get(baseURL + 'state').success(function(res) {
 				$scope.response = res;
 				console.log(res);
@@ -27,7 +27,7 @@ function adminmunicipalityController($rootScope,$scope, $location, $http) {
 					alert(res.message);
 				} else {
 					$scope.states=res;
-					$rootScope.munitems=res;
+					$rootScope.items=res;
 				}
 			
 			}).error(function() {
@@ -92,49 +92,49 @@ function adminmunicipalityController($rootScope,$scope, $location, $http) {
 	
 }
 
-function admineditmunController($rootScope,$scope, $location, $http,$routeParams) {
-	    $scope.adminusername=loginuser;
-        $scope.selectedItem=false;
-		var id=$routeParams.id;				
-			 $http.get(baseURL + 'getmundetail/'+id).success(function(res) {
-				 $scope.response = res;
-				 $scope.mundetail=res;
-			 }).error(function() {
-				 alert("Please check your internet connection or data source.. xxx");
-			 });
-
-		$scope.editmun=function(mundetail){
-			mundetail.stateID=$scope.selectedItem.state_id;
-			alert(mundetail.m_name);
-			alert(mundetail.stateID);
-			alert('m id ='+mundetail.m_id);
-			if (mundetail.m_name == '') {
-			alert('Enter a municipality Name ');
-		} else if(mundetail.state_id == ''){
-		    alert('select a state ');
-		} else {	
-			console.log(mundetail);
-			$http.post(baseURL + 'updateMunicipality', mundetail).success(function(res) {
-				$scope.response = res;
-				console.log(res);
-				if (res.status == false) {
-					alert(res.message);
-				} else {
-					$location.path("/Adminmunicipality");
-				}
-			}).error(function() {
-				alert("Please check your internet connection or data source..");
-			});
-		}
-		};
-		$scope.goto=function(page){
-				$location.path(page);	
-			};
-  $scope.showhide = function(id){
-	if(document.getElementById(id).style.display == 'none'){
-    document.getElementById(id).style.display = 'block';
-   }else{
-   	document.getElementById(id).style.display = 'none';
-   }
-   };
-		}
+// function admineditmunController($rootScope,$scope, $location, $http,$routeParams) {
+	    // $scope.adminusername=loginuser;
+        // $scope.selectedItem=false;
+		// var id=$routeParams.id;				
+			 // $http.get(baseURL + 'getmundetail/'+id).success(function(res) {
+				 // $scope.response = res;
+				 // $scope.mundetail=res;
+			 // }).error(function() {
+				 // alert("Please check your internet connection or data source.. xxx");
+			 // });
+// 
+		// $scope.editmun=function(mundetail){
+			// mundetail.stateID=$scope.selectedItem.state_id;
+			// alert(mundetail.m_name);
+			// alert(mundetail.stateID);
+			// alert('m id ='+mundetail.m_id);
+			// if (mundetail.m_name == '') {
+			// alert('Enter a municipality Name ');
+		// } else if(mundetail.state_id == ''){
+		    // alert('select a state ');
+		// } else {	
+			// console.log(mundetail);
+			// $http.post(baseURL + 'updateMunicipality', mundetail).success(function(res) {
+				// $scope.response = res;
+				// console.log(res);
+				// if (res.status == false) {
+					// alert(res.message);
+				// } else {
+					// $location.path("/Adminmunicipality");
+				// }
+			// }).error(function() {
+				// alert("Please check your internet connection or data source..");
+			// });
+		// }
+		// };
+		// $scope.goto=function(page){
+				// $location.path(page);	
+			// };
+  // $scope.showhide = function(id){
+	// if(document.getElementById(id).style.display == 'none'){
+    // document.getElementById(id).style.display = 'block';
+   // }else{
+   	// document.getElementById(id).style.display = 'none';
+   // }
+   // };
+		// }

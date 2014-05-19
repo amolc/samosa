@@ -21,6 +21,7 @@ config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/Testlogin', {templateUrl: 'partials/super_admin/testlogin.html'});
 	$routeProvider.when('/Editstate/:id', {templateUrl: 'partials/super_admin/editstate.html'});
 	$routeProvider.when('/Editmunicipality/:id', {templateUrl: 'partials/super_admin/editmunicipality.html'});
+	$routeProvider.when('/HousingAssociation', {templateUrl: 'partials/super_admin/housingAssociation.html'});
 	$routeProvider.when('/Adminlogin', {templateUrl: 'partials/super_admin/adminlogin.html'});
     $routeProvider.when('/employees', {templateUrl: 'partials/employee-list.html', controller: 'EmployeeListCtrl'});
     $routeProvider.when('/employees/:employeeId', {templateUrl: 'partials/employee-detail.html', controller: 'EmployeeDetailCtrl'});

@@ -1,6 +1,6 @@
-function housingcontroller($rootScope,$scope, $location, $http, $routeParams) {
+function housingcontroller($rootScope,$scope, $location, $http, $stateParams) {
 		$scope.housingass= {};
-	$scope.stateid= $routeParams.id;
+	$scope.stateid= $stateParams.id;
 	 	id =$scope.stateid;
       $http.get(baseURL + 'housingAssociation/'+id).success(function(res) {
 				$scope.response = res;
@@ -14,9 +14,8 @@ function housingcontroller($rootScope,$scope, $location, $http, $routeParams) {
 			}).error(function() {
 				alert("Please check your internet connection or data source..");
 			});
-			$scope.goto=function(){
-	
-$location.path("/Login");
-};
-
+			$scope.gotologin=function(name){
+	        alert('yes ');
+           $location.path('/Login/'+name);	
+           };
 }

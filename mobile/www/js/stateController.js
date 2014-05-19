@@ -1,4 +1,4 @@
-
+var baseURL="http://localhost:3000/api/";
 function stateController($rootScope,$scope, $location, $http) {
 	$scope.states = {};
 	$scope.muncp= {};
@@ -9,12 +9,14 @@ function stateController($rootScope,$scope, $location, $http) {
 					alert(res.message);
 				} else {
 					console.log(res);
-					$scope.states=res;
-					
+					$scope.states=res;	
 				}
 			
 			}).error(function() {
 				alert("Please check your internet connection or data source..");
 			});
+			$scope.mun=function(id){
+				$location.path('/Municipality/'+id);	
+			};
 			
 }

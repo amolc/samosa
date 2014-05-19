@@ -1,10 +1,20 @@
 <div ng-controller="housingcontroller">
-  <h1>select housing assocation</h1>
- 	<ul class="topcoat-list list">
-		<li ng-repeat="housing in housingass" class="topcoat-list__item">
-			  <a ng-click="goto()">  
-				{{housing.housing_ass_name}}
-				</a>
-		</li>
+ <div class="bar bar-header bar-balanced">
+	  <h1 class="title">ICEFIRE</h1>
+	</div>
+	<div class="bar bar-subheader">
+	  <h2 class="title">Select houising association</h2>
+	</div>
+	<content has-header="true" has-subheader="true">
+		<ul class="list">
+	     <li class="item" ng-repeat="housing in housingass">
+				 	 <a ng-click="gotologin('{{housing.housing_ass_name}}')"> 
+					{{housing.housing_ass_name}}
+					</a>
+	    </li>
 	</ul>
+	</content>	
+	<div class="bar bar-footer bar-balanced">
+	   <div class="title">Footer</div>
+	</div>
 </div>

@@ -22,7 +22,7 @@
 		<li class="active">
 			<a ng-click="goto('Admin')"><span>Manage State</span></a>
 		</li>
-		</ul>
+		</ul>s
           	</li>
           <li class="active"> <a href="" ng-click="showhide('inner_submenu_Muni')"> <i class="entypo-menu"></i><span>Municipalty</span></a>
           	<ul id="inner_submenu_Muni" style="display:none;">
@@ -34,6 +34,16 @@
 		</li>
 		</ul>
           	 </li>
+          	  <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	<ul id="inner_submenu_housingAss" style="display:none;">
+		<li class="active">
+			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+		</li>
+		<li class="active">
+			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+		</li>
+		</ul>
+          	</li>
         </ul>
       </li>
     </ul>
@@ -69,7 +79,8 @@
     </div>
     <hr />
     <div class="row"> </div>
-    <h2 class="table_heading">ADMIN STATE MANGEMENT</h2>
+    <h2 class="table_heading">STATE MANGEMENT</h2> 
+    <button class="btn btn-success" type="button" ng-click="goto('Addstate')">Add State</button>
     <div class="row">
       <div class="col-sm-9">
         <div class="row">

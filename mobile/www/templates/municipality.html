@@ -1,10 +1,20 @@
 <div ng-controller="municipalitycontroller">
-	<h1>select your municipality</h1>
- 	<ul class="topcoat-list list">
-		<li ng-repeat="mun in muncp" class="topcoat-list__item">
-			 <a  href="http://localhost:3000/#/Housing/{{mun.m_id}}"> 
-				{{mun.m_name}}
-				</a>
-		</li>		
+<div class="bar bar-header bar-balanced">
+	  <h1 class="title">ICEFIRE</h1>
+	</div>
+	<div class="bar bar-subheader">
+	  <h2 class="title">Select  Municipality</h2>
+	</div>
+	<content has-header="true" has-subheader="true">
+		<ul class="list">
+	     <li class="item" ng-repeat="mun in muncp">
+				 	 <a ng-click="assoc({{mun.m_id}})"> 
+					{{mun.m_name}}
+					</a>
+	    </li>
 	</ul>
+	 </content>
+	<div class="bar bar-footer bar-balanced">
+	   <div class="title">Footer</div>
+	</div>
 </div>
