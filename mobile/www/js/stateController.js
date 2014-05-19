@@ -1,4 +1,4 @@
-var baseURL="http://localhost:3000/api/";
+
 function stateController($rootScope,$scope, $location, $http) {
 	$scope.states = {};
 	$scope.muncp= {};
