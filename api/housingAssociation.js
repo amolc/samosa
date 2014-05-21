@@ -16,24 +16,27 @@ var db = mysql.createPool({
  	  housingAssociationCRUD.load({'m_id':id}, function (err, val) {	 
  	  	console.log(err); 
  	  	res.jsonp(val);
- 	  });
- 	    
+ 	  });	    
  }; 
  
  
- // exports.allHousingAss = function(req, res) {
- 		 // var query = "SELECT tbl_municipality.m_id , tbl_municipality.m_name , tbl_municipality.state_id , tbl_state.state_name FROM tbl_municipality INNER JOIN tbl_state ON tbl_municipality.state_id = tbl_state.state_id";
-// db.query(query, function(err, rows){
-    // res.jsonp(rows);
-   // });
- // }; 
+ exports.allHousingAss = function(req, res) {
+ 		 var query = "SELECT `tbl_housing_association`.housing_ass_id ,`tbl_housing_association`.`housing_ass_name`,`tbl_housing_association`.`address`,`tbl_housing_association`.`building_password`,tbl_municipality.m_name from `tbl_housing_association` inner join tbl_municipality on `tbl_housing_association`.m_id=tbl_municipality.m_id";
+db.query(query, function(err, rows){
+    res.jsonp(rows);
+   });
+ }; 
  
 
 /******************for create new municipality it inster value in to data base*****************/ 
  
  exports.createNewHousingAss = function(req, res) {
-  housingAssociationCRUD.create({'housing_ass_name' :'Rissing satr','country_id' : 3,'m_id' : 3,'address' :'gulberg lahore','building_password' :'123',
- 'telephone_no' :'03347268737','emergency_contact':'063225454','email' :'shahzad@fortsolution.com'}, function (err, vals) {
+ 	var hname=req.body.h_name;
+ 	var mid=req.body.m_ID;
+ 	var address=req.body.address;
+ 	var pass=req.body.bPass;
+  housingAssociationCRUD.create({'housing_ass_name' :hname,'m_id' :mid ,'address' :address,'building_password' :pass}, function (err, vals) {
+  	console.log(err);
   if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
   		      message:'housing association successfully added'};
@@ -61,10 +64,10 @@ housingAssociationCRUD.destroy({'housing_ass_id' : housing_ass_id}, function (er
 	  	res.jsonp(resdata);
 	  	}else{
 	  		 var resdata={status:false,
-  		      message:'record not found '};
+  		      message:'record not found against it'};
 	  	      res.jsonp(resdata);
 	  	     }
-  	
+	  	     console.log(resdata);
      });
     };
    

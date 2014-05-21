@@ -3,7 +3,7 @@
   <div class="sidebar-menu">
     <header class="logo-env"> 
       <!-- logo -->
-      <div class="logo"> <a href="../main/index.html"> <img class="logoimage" src="css/assets/images/logo.png" alt="" /> </a> </div>
+      <div class="logo"> <a> <img class="logoimage" src="css/assets/images/logo.png" alt="" /> </a> </div>
       <!-- logo collapse icon -->
       <div class="sidebar-collapse"> <a href="" class="sidebar-collapse-icon with-animation" ng-click="showhide('main-menu')"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition --> 
         <i class="entypo-menu"></i> </a> </div>
@@ -22,7 +22,7 @@
 		<li class="active">
 			<a ng-click="goto('Admin')"><span>Manage State</span></a>
 		</li>
-		</ul>s
+		</ul>
           	</li>
           <li class="active"> <a href="" ng-click="showhide('inner_submenu_Muni')"> <i class="entypo-menu"></i><span>Municipalty</span></a>
           	<ul id="inner_submenu_Muni" style="display:none;">
@@ -37,10 +37,10 @@
           	  <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
           	<ul id="inner_submenu_housingAss" style="display:none;">
 		<li class="active">
-			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+			<a ng-click="goto('AddHousingAss')"><span>Add Housing Association</span></a>
 		</li>
 		<li class="active">
-			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+			<a ng-click="goto('HousingAssociation')"><span>Manage Housing Association</span></a>
 		</li>
 		</ul>
           	</li>
@@ -80,7 +80,9 @@
     <hr />
     <div class="row"> </div>
     <h2 class="table_heading">STATE MANGEMENT</h2> 
-    <button class="btn btn-success" type="button" ng-click="goto('Addstate')">Add State</button>
+   <div class="add_btn_container"> 
+   	<button class="btn btn-success" type="button" ng-click="goto('Addstate')">Add State</button>
+   </div>
     <div class="row">
       <div class="col-sm-9">
         <div class="row">
@@ -92,7 +94,7 @@
 		<tr>
 			
 			<th>State name</th>
-			<th>State Location</th>
+			<th>country</th>
 			<th>Action</th>
 		</tr>
 	</thead>

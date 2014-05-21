@@ -75,11 +75,9 @@ function adminmunicipalityController($rootScope,$scope, $location, $http) {
 				$location.path(page);	
 			};
 			$scope.edit=function(id){
-				alert(id);
 				$location.path('/Editmunicipality/'+id);	
 			};
 			$scope.view=function(id){
-				alert(id);
 				$location.path('/Viewmunicipality/'+id);	
 			};
 			  $scope.showhide = function(id){
@@ -105,9 +103,6 @@ function admineditmunController($rootScope,$scope, $location, $http,$routeParams
 
 		$scope.editmun=function(mundetail){
 			mundetail.stateID=$scope.selectedItem.state_id;
-			alert(mundetail.m_name);
-			alert(mundetail.stateID);
-			alert('m id ='+mundetail.m_id);
 			if (mundetail.m_name == '') {
 			alert('Enter a municipality Name ');
 		} else if(mundetail.state_id == ''){

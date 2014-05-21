@@ -1,12 +1,12 @@
  <div ng-controller="stateController">
-	<div class="bar bar-header bar-balanced">
-	  <h1 class="title">ICEFIRE</h1>
+	<div class="bar bar-header bar-gray">
+	  <h1 class="title" style="color:#FFFFFF">ICEFIRE</h1>
 	</div>
 	<div class="bar bar-subheader">
-	  <h2 class="title">Select state</h2>
+	  <h2 class="title">States</h2>
 	</div>
 	<content has-header="true" has-subheader="true">
-		<ul class="list">
+		<ul >
 	     <li class="item" ng-repeat="state in states">
 				 	 <a ng-click="mun({{state.state_id}})"> 
 					{{state.state_name}}
@@ -15,7 +15,7 @@
 	</ul>
 	 </content>
 		
-	<div class="bar bar-footer bar-balanced">
-	   <div class="title">Footer</div>
+	<div class="bar bar-footer bar-gray">
+	   <div class="title">All © copyrights are reserved by icefire</div>
 	</div>
 </div>

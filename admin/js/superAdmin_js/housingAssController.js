@@ -1,46 +1,52 @@
 function housingAssController($rootScope,$scope, $location, $http) {
 	 $scope.adminusername=loginuser;
      $rootScope.items = [];
-		$scope.mun={
-		 mun_name :'',
-		 stateID :''
+		$scope.hous={
+		 h_name :'',
+		 m_ID :'',
+		 address:'',
+		 bPass:''
 	};
 	$scope.selectedItem='false';
-		$http.get(baseURL + 'allmunicipality').success(function(res) {
+		$http.get(baseURL + 'allHousingAss').success(function(res) {
 				$scope.response = res;
 				console.log(res);
 				if (res.status == 'false') {
 					alert(res.message);
 				} else {
 					console.log(res);
-					$scope.municipality=res;
+					$scope.housingass=res;
 				}
 			
 			}).error(function() {
 				alert("Please check your internet connection or data source..");
 			});
-			//for getting state and their d to insert in add municipality
-			$http.get(baseURL + 'state').success(function(res) {
-				$scope.response = res;
-				console.log(res);
-				if (res.status == 'false') {
-					alert(res.message);
-				} else {
-					$scope.states=res;
-					$rootScope.items=res;
-				}
 			
-			}).error(function() {
-				alert("Please check your internet connection or data source..");
+			
+			//for getting state and their d to insert in add municipality
+			
+			 $http.get(baseURL + 'munplicitylist').success(function(res) {
+				 $scope.response = res;
+				 console.log(res);
+				 if (res.status == 'false') {
+					 alert(res.message);
+				 } else {
+					 $scope.states=res;
+					 $rootScope.municipalitylist=res;
+				 }
+			 }).error(function() {
+			 alert("Please check your internet connection or data source..");
 			});
 			
 			$scope.del=function(id){
-			$http.get(baseURL + 'deleteMunicipality/'+id).success(function(res) {
+			$http.get(baseURL + 'deleteHousingAss/'+id).success(function(res) {
 				$scope.response = res;
 				if (res.status == false) {
 					alert(res.message);
-				} else {
-					$location.path('/Adminmunicipality');					
+				}else {
+					alert(res.message);
+					alert('hiiiii');
+					$location.path('/HousingAssociation');			
 				}
 			
 			}).error(function() {
@@ -49,38 +55,41 @@ function housingAssController($rootScope,$scope, $location, $http) {
 				
 			};
 			
-			$scope.AddMunicipality=function(){
-			$scope.mun.stateID=$scope.selectedItem.state_id;
-			if ($scope.mun.mun_name == '') {
-			alert('Enter a municipality Name ');
-		} else if($scope.mun.stateID == null){
+			$scope.AddHousingAss=function(){
+			$scope.hous.m_ID=$scope.selectedItem.m_id;
+			if ($scope.hous.h_name == '') {
+			alert('Enter a Housing Association Name ');
+		    } else if($scope.hous.m_ID == null){
 		    alert('select state name ');
-		} else {  
-			$http.post(baseURL + 'addMunicipality',$scope.mun).success(function(res) {
-				$scope.response = res;
-				console.log(res);
-				if (res.status == false) {
-					alert(res.message);
-				} else {
-					alert(res.message);
-					$location.path("/Adminmunicipality");
-				}
-			}).error(function() {
-				alert("Please check your internet connection or data source..");
-			});
-		}
+		  }
+		    else if($scope.hous.address == ''){
+		    alert('enter address ');
+		} else if($scope.hous.bPass == ''){
+		    alert('enter building password');
+	 }	  else {  
+			 $http.post(baseURL + 'addHousingAss',$scope.hous).success(function(res) {
+				 $scope.response = res;
+				 console.log(res);
+				 if (res.status == false) {
+					 alert(res.message);
+				 } else {
+					 alert(res.message);
+					console.log($location.path("/HousingAssociation"));
+				 }
+			 }).error(function() {
+				 alert("Please check your internet connection or data source..");
+			 });
+		 }
 		};
 			
 			$scope.goto=function(page){
 				$location.path(page);	
 			};
 			$scope.edit=function(id){
-				alert(id);
 				$location.path('/Editmunicipality/'+id);	
 			};
 			$scope.view=function(id){
-				alert(id);
-				$location.path('/Viewmunicipality/'+id);	
+				$location.path('/Viewhousingass/'+id);	
 			};
 			  $scope.showhide = function(id){
 	if(document.getElementById(id).style.display == 'none'){
@@ -92,49 +101,49 @@ function housingAssController($rootScope,$scope, $location, $http) {
 	
 }
 
-// function admineditmunController($rootScope,$scope, $location, $http,$routeParams) {
-	    // $scope.adminusername=loginuser;
-        // $scope.selectedItem=false;
-		// var id=$routeParams.id;				
-			 // $http.get(baseURL + 'getmundetail/'+id).success(function(res) {
-				 // $scope.response = res;
-				 // $scope.mundetail=res;
-			 // }).error(function() {
-				 // alert("Please check your internet connection or data source.. xxx");
-			 // });
-// 
-		// $scope.editmun=function(mundetail){
-			// mundetail.stateID=$scope.selectedItem.state_id;
-			// alert(mundetail.m_name);
-			// alert(mundetail.stateID);
-			// alert('m id ='+mundetail.m_id);
-			// if (mundetail.m_name == '') {
-			// alert('Enter a municipality Name ');
-		// } else if(mundetail.state_id == ''){
-		    // alert('select a state ');
-		// } else {	
-			// console.log(mundetail);
-			// $http.post(baseURL + 'updateMunicipality', mundetail).success(function(res) {
-				// $scope.response = res;
-				// console.log(res);
-				// if (res.status == false) {
-					// alert(res.message);
-				// } else {
-					// $location.path("/Adminmunicipality");
-				// }
-			// }).error(function() {
-				// alert("Please check your internet connection or data source..");
-			// });
-		// }
-		// };
-		// $scope.goto=function(page){
-				// $location.path(page);	
-			// };
-  // $scope.showhide = function(id){
-	// if(document.getElementById(id).style.display == 'none'){
-    // document.getElementById(id).style.display = 'block';
-   // }else{
-   	// document.getElementById(id).style.display = 'none';
-   // }
-   // };
-		// }
+function adminedithousController($rootScope,$scope, $location, $http,$routeParams) {
+	    $scope.adminusername=loginuser;
+        $scope.selectedItem=false;
+		var id=$routeParams.id;				
+			 $http.get(baseURL + 'getAssdetail/'+id).success(function(res) {
+				 $scope.response = res;
+				 $scope.assdetail=res;
+			 }).error(function() {
+				 alert("Please check your internet connection or data source.. xxx");
+			 });
+
+		$scope.edithou=function(mundetail){
+			mundetail.stateID=$scope.selectedItem.state_id;
+			alert(mundetail.m_name);
+			alert(mundetail.stateID);
+			alert('m id ='+mundetail.m_id);
+			if (mundetail.m_name == '') {
+			alert('Enter a municipality Name ');
+		} else if(mundetail.state_id == ''){
+		    alert('select a state ');
+		} else {	
+			console.log(mundetail);
+			$http.post(baseURL + 'updateMunicipality', mundetail).success(function(res) {
+				$scope.response = res;
+				console.log(res);
+				if (res.status == false) {
+					alert(res.message);
+				} else {
+					$location.path("/Adminmunicipality");
+				}
+			}).error(function() {
+				alert("Please check your internet connection or data source..");
+			});
+		}
+		};
+		$scope.goto=function(page){
+				$location.path(page);	
+			};
+  $scope.showhide = function(id){
+	if(document.getElementById(id).style.display == 'none'){
+    document.getElementById(id).style.display = 'block';
+   }else{
+   	document.getElementById(id).style.display = 'none';
+   }
+   };
+		}

@@ -34,6 +34,16 @@
 		</li>
 		</ul>
           	 </li>
+          	   <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	<ul id="inner_submenu_housingAss" style="display:none;">
+		<li class="active">
+			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+		</li>
+		<li class="active">
+			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+		</li>
+		</ul>
+          	</li>
         </ul>
       </li>
     </ul>
@@ -86,7 +96,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label">Location</label>
+						<label for="field-2" class="col-sm-3 control-label">Country</label>
 						
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="field-2" placeholder="Enter location" ng-model='statedetail.state_location'>
@@ -94,7 +104,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" class="btn btn-default" ng-click='editState(statedetail)'>Edit State</button>
+							<button type="submit" class="btn btn_back" ng-click='editState(statedetail)'>Edit State</button>
 						</div>
 					</div>
 </form>

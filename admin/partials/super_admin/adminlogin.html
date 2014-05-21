@@ -1,10 +1,12 @@
-<div ng-controller="adminLoginController">
-	<h1>admin login </h1>
-<form role="form" class="form-horizontal form-groups-bordered">
+<div class="main_login"  ng-controller="adminLoginController">
+	
+<form role="form" class="form-horizontal form-groups-bordered login_form">
+	<div class="login_inner">
+		<h1 class="login_header">Admin Panel </h1>
 	               <div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">User name</label>
+						<label for="field-1" class="col-sm-3 control-label">Username</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" placeholder="Enter user name" ng-model="user.username">
+							<input type="text" class="form-control" id="field-1" placeholder="Enter username" ng-model="user.username">
 						</div>
 					</div>
 					<div class="form-group">
@@ -15,8 +17,9 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" class="btn btn-default" ng-click="login(user)">Sign in</button>
+							<button type="submit" class="btn  btn-success_green loginbtn" ng-click="login(user)">Login</button>
 						</div>
 					</div>
+	</div>				
 				</form>
 	</div>

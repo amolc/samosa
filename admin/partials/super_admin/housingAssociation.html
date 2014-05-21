@@ -44,6 +44,16 @@
 		</li>
 		</ul>
           	</li>
+          	  <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	<ul id="inner_submenu_housingAss" style="display:none;">
+		<li class="active">
+			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+		</li>
+		<li class="active">
+			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+		</li>
+		</ul>
+          	</li>
         </ul>
       </li>
     </ul>
@@ -80,7 +90,7 @@
     <hr />
     <div class="row"> </div>
     <h2 class="table_heading">HOUSING ASSOCIATION MANGEMENT</h2> 
-    <button class="btn btn-success" type="button" ng-click="goto('Addstate')">Add Housing Association</button>
+    <button class="btn btn-success_green_add_hou" type="button" ng-click="goto('Addstate')">Add Housing Association</button>
     <div class="row">
       <div class="col-sm-9">
         <div class="row">
@@ -93,27 +103,29 @@
 			
 			<th>Housing Association Name</th>
 				<th>Municipality Name</th>
-			<th>Address</th>
+			 <th>Building Password</th> 
+			 <th>Address</th>
 			<th>Action</th>
 		</tr>
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="state in states">
-			<td>{{state.state_name}}</td>
-			<td>{{state.state_location}}</td>	
-			<td>{{state.state_location}}</td>		
+		<tr ng-repeat="ass in housingass">
+			<td>{{ass.housing_ass_name}}</td>
+			<td>{{ass.m_name}}</td>	
+			<td>{{ass.building_password}}</td> 
+			<td>{{ass.address}}</td>		
 			<td>
-				<a href="" class="btn btn-default btn-sm btn-icon icon-left" ng-click='edit({{state.state_id}})'>
+				<a  class="btn btn-default btn-sm btn-icon icon-left" ng-click='edit({{ass.housing_ass_id}})'>
 					<i class="entypo-pencil"></i>
 					Edit
 				</a>
 				
-				<a href="#" class="btn btn-danger btn-sm btn-icon icon-left" ng-click='del({{state.state_id}})'>
+				<a class="btn btn-danger btn-sm btn-icon icon-left" ng-click='del({{ass.housing_ass_id}})'>
 					<i class="entypo-cancel"></i>
 					Delete
 				</a>
-				<a href="" class="btn btn-info btn-sm btn-icon icon-left" ng-click='statedata({{state.state_id}})'>
+				<a  class="btn btn-info btn-sm btn-icon icon-left" ng-click='view({{ass.housing_ass_id}})'>
 					<i class="entypo-info"></i>
 					View
 				</a>

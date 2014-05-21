@@ -34,6 +34,16 @@
 		</li>
 		</ul>
           	 </li>
+          	   <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	<ul id="inner_submenu_housingAss" style="display:none;">
+		<li class="active">
+			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+		</li>
+		<li class="active">
+			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+		</li>
+		</ul>
+          	</li>
         </ul>
       </li>
     </ul>
@@ -69,7 +79,7 @@
     </div>
     <hr />
     <div class="row"> </div>
-    <h2 class="table_heading">Add new state</h2>
+    <h2 class="table_heading">Add new State</h2>
     <div class="row">
       <div class="col-sm-9">
         <div class="row">
@@ -81,20 +91,20 @@
 						<label for="field-1" class="col-sm-3 control-label">State Name</label>
 						
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" placeholder="Enter state name" ng-model='state.statename'>
+							<input type="text" class="form-control" id="field-1" placeholder="Enter State name" ng-model='state.statename'>
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label">Location</label>
+						<label for="field-2" class="col-sm-3 control-label">Country</label>
 						
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-2" placeholder="Enter location" ng-model='state.statelocation'>
+							<input type="text" class="form-control" id="field-2" placeholder="Enter Country" ng-model='state.statelocation'>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" class="btn btn-default" ng-click='addState(state)'>Add State</button>
+							<button type="submit" class="btn btn_back" ng-click='addState(state)'>Add State</button>
 						</div>
 					</div>
 </form>

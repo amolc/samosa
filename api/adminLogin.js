@@ -17,10 +17,10 @@ var db = mysql.createPool({
  	  	};
  	  	if(val.length>0){
  	  		resdata.status=true;
- 	  		resdata.message='successfully login welcom to .admin panal.';  		
+ 	  		resdata.message='successfully login welcome to admin panel.';  		
  	  	}else{
  	  		resdata.status=false;
- 	  		resdata.message='wrong user name or password ..please enter a valid one ';
+ 	  		resdata.message='wrong username or password please enter a valid ';
  	  	}
  	  	  
  	  	res.jsonp(resdata);

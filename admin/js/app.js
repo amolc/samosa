@@ -13,9 +13,11 @@ config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/Addstate', {templateUrl: 'partials/super_admin/addState.html'});
 	$routeProvider.when('/Viewstate/:id', {templateUrl: 'partials/super_admin/viewstate.html'});
 	$routeProvider.when('/Viewmunicipality/:id', {templateUrl: 'partials/super_admin/viewmunicipality.html'});
+	$routeProvider.when('/Viewhousingass/:id', {templateUrl: 'partials/super_admin/viewhousigass.html'});
 	
 	$routeProvider.when('/Adminmunicipality', {templateUrl: 'partials/super_admin/adminMunicipality.html'});
 	$routeProvider.when('/Addmunicipality', {templateUrl: 'partials/super_admin/addmunicipality.html'});
+	$routeProvider.when('/AddHousingAss', {templateUrl: 'partials/super_admin/addhousingass.html'});
 	
 	$routeProvider.when('/Admin', {templateUrl: 'partials/super_admin/admin.html'});
 	$routeProvider.when('/Testlogin', {templateUrl: 'partials/super_admin/testlogin.html'});

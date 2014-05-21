@@ -22,11 +22,11 @@ var db = mysql.createPool({
  
  /******************for select all municipality *****************/
 
-  // exports.allMunicipality = function(req, res) {
- 	  // municipalityCRUD.load({}, function (err, val) {	  
- 	  	// res.jsonp(val);
- 	  // });   
- // }; 
+  exports.MunicipalityList = function(req, res) {
+ 	  municipalityCRUD.load({}, function (err, val) {	  
+ 	  	res.jsonp(val);
+ 	  });   
+ }; 
 
   exports.allMunicipality = function(req, res) {
  		 var query = "SELECT tbl_municipality.m_id , tbl_municipality.m_name , tbl_municipality.state_id , tbl_state.state_name FROM tbl_municipality INNER JOIN tbl_state ON tbl_municipality.state_id = tbl_state.state_id";

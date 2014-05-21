@@ -31,3 +31,10 @@ var db = mysql.createPool({
               res.jsonp(rows[0]);
    });
  };  
+  exports.housingAssdetail = function(req, res) {
+	var id=parseInt(req.params.id);
+	 		 var query = "SELECT `tbl_housing_association`.housing_ass_id ,`tbl_housing_association`.`housing_ass_name`,`tbl_housing_association`.`address`,`tbl_housing_association`.`building_password`,tbl_municipality.m_name from `tbl_housing_association` inner join tbl_municipality on `tbl_housing_association`.m_id=tbl_municipality.m_id  where  tbl_housing_association.housing_ass_id="+id;
+              db.query(query, function(err, rows){
+              res.jsonp(rows[0]);
+   });
+ };  

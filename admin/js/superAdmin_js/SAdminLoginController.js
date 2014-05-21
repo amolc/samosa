@@ -13,14 +13,11 @@ function adminLoginController($rootScope,$scope, $location, $http, $routeParams)
 		} else {		      
 			$http.post(baseURL + 'adminLogin', user).success(function(res) {
 				$scope.response = res;
-				console.log(res);
 				if (res.status == false) {
 					alert(res.message);
 				} else {
 					loginuser=user.username;
-					alert(loginuser);
 					$rootScope= islogin=true;
-					alert(res.message);
 					$location.path("/Admin");
 				}
 			}).error(function() {

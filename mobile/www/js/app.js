@@ -16,6 +16,11 @@ angular.module('samosa', ['ionic', 'ngSanitize','angular-carousel'])
 				url: '/Login/:name',
 				templateUrl: 'templates/login.html'
 			})
+				.state('Newsfeed', {
+				url: '/Newsfeed/:name',
+				templateUrl: 'templates/news_feed.html'
+			})
+
 			.state('Housing', {
 				url: '/Housing/:id',
 				templateUrl: 'templates/housingass.html'

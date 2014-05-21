@@ -30,10 +30,20 @@
 			<a  ng-click="goto('Addmunicipality')"><span>Add Municipalty</span></a>
 		</li>
 		<li class="active">
-			<a href= ng-click="goto('Adminmunicipality')"><span>Manage Municipalty</span></a>
+			<a  ng-click="goto('Adminmunicipality')"><span>Manage Municipalty</span></a>
 		</li>
 		</ul>
           	 </li>
+          	   <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	<ul id="inner_submenu_housingAss" style="display:none;">
+		<li class="active">
+			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+		</li>
+		<li class="active">
+			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+		</li>
+		</ul>
+          	</li>
         </ul>
       </li>
     </ul>
@@ -89,7 +99,7 @@
 						<label class="col-sm-3 control-label">State </label>
 			
 					<div class="col-sm-5">
-							 <select  class="form-control" ng-model="selectedItem" ng-options="item as item.state_name for item in items" ng-selected="mundetail.state_name == item.state_name">
+							 <select  class="form-control" ng-model="selectedItem" ng-options="item as item.state_name for item in munitems" ng-selected="mundetail.state_name == item.state_name">
               <!-- <option  ng-repeat="item in items" value="{{item.m_id}}" ng-selected="mundetail.state_name == item.state_name">{{item.state_name}} -->
                       <option ng-selected="mundetail.state_name == item.state_name"></option>
           </select>
@@ -97,10 +107,10 @@
 						</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" class="btn btn-default" ng-click='editmun(mundetail)'>Edit Municipality</button>
+							<button type="submit" class="btn btn_back" ng-click='editmun(mundetail)'>Edit Municipality</button>
 						</div>
 					</div>
-					{{selectedItem | json}}
+					
 </form>
             </div>
           </div>

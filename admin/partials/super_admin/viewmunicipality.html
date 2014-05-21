@@ -34,6 +34,16 @@
 		</li>
 		</ul>
           	 </li>
+          	   <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	<ul id="inner_submenu_housingAss" style="display:none;">
+		<li class="active">
+			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+		</li>
+		<li class="active">
+			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+		</li>
+		</ul>
+          	</li>
         </ul>
       </li>
     </ul>
@@ -77,13 +87,13 @@
             <div class="panel panel-default">
               <div class="panel-heading"> </div>
 <form role="form" class="form-horizontal form-groups-bordered">
-	<div class="form-group">
+	<!-- <div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Municipality ID</label>
 						
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="field-1" placeholder="" ng-model='mundetail.m_id' readonly="true">
 						</div>
-					</div>
+					</div> -->
 	<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Municipality Name</label>
 						
@@ -93,7 +103,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label">state Name</label>
+						<label for="field-2" class="col-sm-3 control-label">State Name</label>
 						
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="field-2" placeholder="" ng-model='mundetail.state_name' readonly="true">
@@ -101,7 +111,8 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
-							<a ng-click="goto('Adminmunicipality')"><button>Back</button></a>
+							<!-- <a ng-click="goto('Adminmunicipality')"><button>Back</button></a> -->
+							<button ng-click="goto('Adminmunicipality')" type="button" class="btn btn_back">Back</button>
 						</div>
 					</div>
 </form>
