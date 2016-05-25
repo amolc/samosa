@@ -2,8 +2,8 @@ var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
 	database : 'icefire',
-     user : 'icefire',
-	password : 'ferrari4321',
+     user : 'root',
+  password : '',
     host :'localhost',
  });
 
@@ -15,6 +15,15 @@ var db = mysql.createPool({
  	  stateCrud.load({state_id:id}, function (err, val) {	
  	  	res.jsonp(val[0]);
  	  });  
+ }; 
+
+ var CRUD = require('mysql-crud');
+ var todoCrud=CRUD(db, 'tbl_todo');
+ exports.tododetail = function(req, res) {
+  var id=parseInt(req.params.id);
+    todoCrud.load({todo_id:id}, function (err, val) { 
+      res.jsonp(val[0]);
+    });  
  }; 
  
 // exports.municipalitydetail = function(req, res) {

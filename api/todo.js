@@ -9,23 +9,23 @@ var db = mysql.createPool({
  });
 
  var CRUD = require('mysql-crud');
- var stateCrud=CRUD(db, 'tbl_state');
+ var todoCrud=CRUD(db, 'tbl_todo');
  
- exports.findAllstate = function(req, res) {
- 	  stateCrud.load({}, function (err, val) {	   	  	
+ exports.findAlltodo = function(req, res) {
+ 	  todoCrud.load({}, function (err, val) {	   	  	
  	  	res.jsonp(val);
  	  });  
  }; 
  
  /******************for create new state it inster value in to data base*****************/ 
  
- exports.createNewState = function(req, res) {
- 	var statename=req.body.statename;
- 	var statelocation=req.body.statelocation;
-  stateCrud.create({'state_name' :statename,'state_location' : statelocation}, function (err, vals) {
+ exports.createNewTodo = function(req, res) {
+ 	var todoTitle=req.body.todo_title;
+ 	var todoDescription=req.body.todo_description;
+  todoCrud.create({'todo_title' :todoTitle,'todo_description' : todoDescription}, function (err, vals) {
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
-  		      message:'state successfully added'};
+  		      message:'todo successfully added'};
 	  	res.jsonp(resdata);
 	  	}else{
 	  		 var resdata={status:false,
@@ -39,13 +39,13 @@ var db = mysql.createPool({
 
 /******************for  delete data from  data base*****************/
 
-exports.deleteState = function(req, res) {
-	var state_id=parseInt(req.params.id);
-  stateCrud.destroy({'state_id' : state_id}, function (err, vals) {
+exports.deleteTodo = function(req, res) {
+	var todo_id=parseInt(req.params.id);
+  todoCrud.destroy({'todo_id' : todo_id}, function (err, vals) {
   	console.log(vals.affectedRows);
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
-  		      message:'state successfully deleted'};
+  		      message:'todo successfully deleted'};
 	  	res.jsonp(resdata);
 	  	}else{
 	  		 var resdata={status:false,
@@ -59,14 +59,14 @@ exports.deleteState = function(req, res) {
 
 /******************for  update data in data base********/
 
- exports.updateState = function(req, res) {
- 	statename=req.body.state_name;
- 	statelocation=req.body.state_location;
- 	stateid=req.body.state_id;
-  stateCrud.update({'state_id' : stateid}, {state_name:statename,state_location:statelocation}, function (err, vals) {
+ exports.updateTodo = function(req, res) {
+ 	var todoTitle=req.body.todo_title;
+  var todoDescription=req.body.todo_description;
+ 	var todoid=req.body.state_id;
+  todoCrud.update({'todo_id' : todoid}, {todo_title:todoTitle,todo_description:todoDescription}, function (err, vals) {
   	if(parseInt(vals.affectedRows)>0){
   		var resdata={status:true,
-  		      message:'state successfully updated'};
+  		      message:'todo successfully updated'};
 	  	res.jsonp(resdata);
 	  	}else{
 	  		 var resdata={status:false,
@@ -77,3 +77,14 @@ exports.deleteState = function(req, res) {
    };
   
 /******************  End Update *****************/
+
+/******************start Details ***************/
+
+exports.tododetail = function(req, res) {
+  var id=parseInt(req.params.id);
+    todoCrud.load({todo_id:id}, function (err, val) { 
+      res.jsonp(val[0]);
+    });  
+ }; 
+ 
+/******************end Details ***************/

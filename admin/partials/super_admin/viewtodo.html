@@ -1,4 +1,4 @@
-<div ng-controller="adminstateController">
+<div ng-controller="adminedittodoController">
 <div class="page-container">
   <div class="sidebar-menu">
     <header class="logo-env"> 
@@ -20,12 +20,21 @@
 			<a ng-click="goto('Addstate')"><span>Add State</span></a>
 		</li>
 		<li class="active">
-			<a  ng-click="goto('Admin')"><span>Manage State</span></a>
+			<a ng-click="goto('Admin')"><span>Manage State</span></a>
 		</li>
 		</ul>
           	</li>
 
-    
+          <li> <a ng-click="showhide('inner_submenu_todo')"> <i class="entypo-menu"></i><span>Todo</span></a> 
+            <ul id="inner_submenu_todo" style="display:none;">
+        <li class="active">
+          <a ng-click="goto('Addtodo')"><span>Add Todo</span></a>
+        </li>
+        <li class="active">
+          <a ng-click="goto('Admintodo')"><span>Manage Todo</span></a>
+        </li>
+      </ul>
+        </li>
 
           <li class="active"> <a href="" ng-click="showhide('inner_submenu_Muni')"> <i class="entypo-menu"></i><span>Municipalty</span></a>
           	<ul id="inner_submenu_Muni" style="display:none;">
@@ -33,7 +42,7 @@
 			<a ng-click="goto('Addmunicipality')"><span>Add Municipalty</span></a>
 		</li>
 		<li class="active">
-			<a ng-click="goto('Adminmunicipality')"><span>Manage Municipalty</span></a>
+			<a  ng-click="goto('Adminmunicipality')"><span>Manage municipality</span></a>
 		</li>
 		</ul>
           	 </li>
@@ -58,7 +67,7 @@
         <ul class="user-info pull-left pull-none-xsm">
           <!-- Profile Info -->
           <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right --> 
-           <a ng-model='adminusername' class="dropdown-toggle" data-toggle="dropdown"> <img src="../../assets/images/thumb-1.png" alt="" class="img-circle" / >{{adminusername}}</a>
+             <a ng-model='adminusername' class="dropdown-toggle" data-toggle="dropdown"> <img src="../../assets/images/thumb-1.png" alt="" class="img-circle" / >{{adminusername}}</a>
             <ul class="dropdown-menu">
               <!-- Reverse Caret -->
               <li class="caret"></li>
@@ -82,32 +91,41 @@
     </div>
     <hr />
     <div class="row"> </div>
-    <h2 class="table_heading">Add new State</h2>
+    <h2 class="table_heading">View Todo</h2>
     <div class="row">
       <div class="col-sm-9">
         <div class="row">
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading"> </div>
-        <form role="form" class="form-horizontal form-groups-bordered">
-	<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">State Name</label>
+<form role="form" class="form-horizontal form-groups-bordered">
+	<!-- <div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">State ID</label>
 						
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" placeholder="Enter State name" ng-model='state.statename'>
+							<input type="text" class="form-control" id="field-1" placeholder="Enter state name" ng-model='statedetail.state_id' readonly="true">
+						</div>
+					</div> -->
+	<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Title</label>
+						
+						<div class="col-sm-5">
+						
+                 <input type="text" class="form-control" id="field-1" placeholder="Enter Title" ng-model='tododetail.todo_title' readonly="true">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label">Country</label>
+						<label for="field-2" class="col-sm-3 control-label">Description</label>
 						
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-2" placeholder="Enter Country" ng-model='state.statelocation'>
+              <input type="text" class="form-control" id="field-2" placeholder="Enter Description" ng-model='tododetail.todo_description' readonly="true">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" class="btn btn_back" ng-click='addState(state)'>Add State</button>
+							<!-- <a ng-click="goto('Admin')"><button>Back</button></a> -->
+							<button ng-click="goto('Admintodo')" type="button" class="btn btn_back">Back</button>
 						</div>
 					</div>
 </form>

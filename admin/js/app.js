@@ -32,4 +32,11 @@ config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/Municipality/:id', {templateUrl: 'partials/municipality.html'});
     $routeProvider.when('/Housing/:id', {templateUrl: 'partials/housingass.html'});
     $routeProvider.when('/Login', {templateUrl: 'partials/login.html',controller: 'loginController'});
+
+    $routeProvider.when('/Todo', {templateUrl: 'partials/todo.html'});
+	$routeProvider.when('/Admintodo', {templateUrl: 'partials/super_admin/todo.html'});
+	$routeProvider.when('/Addtodo', {templateUrl: 'partials/super_admin/addTodo.html'});
+	$routeProvider.when('/Edittodo/:id', {templateUrl: 'partials/super_admin/edittodo.html'});
+	$routeProvider.when('/Viewtodo/:id', {templateUrl: 'partials/super_admin/viewtodo.html'});
+   
 }]);

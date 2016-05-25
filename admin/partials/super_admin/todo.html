@@ -1,9 +1,9 @@
-<div ng-controller="adminstateController">
+<div ng-controller="admintodoController">
 <div class="page-container">
   <div class="sidebar-menu">
     <header class="logo-env"> 
       <!-- logo -->
-      <div class="logo"> <a href="../main/index.html"> <img class="logoimage" src="css/assets/images/logo.png" alt="" /> </a> </div>
+      <div class="logo"> <a> <img class="logoimage" src="css/assets/images/logo.png" alt="" /> </a> </div>
       <!-- logo collapse icon -->
       <div class="sidebar-collapse"> <a href="" class="sidebar-collapse-icon with-animation" ng-click="showhide('main-menu')"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition --> 
         <i class="entypo-menu"></i> </a> </div>
@@ -20,12 +20,20 @@
 			<a ng-click="goto('Addstate')"><span>Add State</span></a>
 		</li>
 		<li class="active">
-			<a  ng-click="goto('Admin')"><span>Manage State</span></a>
+			<a ng-click="goto('Admin')"><span>Manage State</span></a>
 		</li>
 		</ul>
           	</li>
-
-    
+        <li> <a ng-click="showhide('inner_submenu_todo')"> <i class="entypo-menu"></i><span>Todo</span></a> 
+          	<ul id="inner_submenu_todo" style="display:none;">
+				<li class="active">
+					<a ng-click="goto('Addtodo')"><span>Add Todo</span></a>
+				</li>
+				<li class="active">
+					<a ng-click="goto('Admintodo')"><span>Manage Todo</span></a>
+				</li>
+			</ul>
+        </li>
 
           <li class="active"> <a href="" ng-click="showhide('inner_submenu_Muni')"> <i class="entypo-menu"></i><span>Municipalty</span></a>
           	<ul id="inner_submenu_Muni" style="display:none;">
@@ -33,17 +41,17 @@
 			<a ng-click="goto('Addmunicipality')"><span>Add Municipalty</span></a>
 		</li>
 		<li class="active">
-			<a ng-click="goto('Adminmunicipality')"><span>Manage Municipalty</span></a>
+			<a  ng-click="goto('Adminmunicipality')"><span>Manage municipality</span></a>
 		</li>
 		</ul>
           	 </li>
-          	   <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
+          	  <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a> 
           	<ul id="inner_submenu_housingAss" style="display:none;">
 		<li class="active">
-			<a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
+			<a ng-click="goto('AddHousingAss')"><span>Add Housing Association</span></a>
 		</li>
 		<li class="active">
-			<a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
+			<a ng-click="goto('HousingAssociation')"><span>Manage Housing Association</span></a>
 		</li>
 		</ul>
           	</li>
@@ -58,7 +66,7 @@
         <ul class="user-info pull-left pull-none-xsm">
           <!-- Profile Info -->
           <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right --> 
-           <a ng-model='adminusername' class="dropdown-toggle" data-toggle="dropdown"> <img src="../../assets/images/thumb-1.png" alt="" class="img-circle" / >{{adminusername}}</a>
+            <a ng-model='adminusername' class="dropdown-toggle" data-toggle="dropdown">Welcome  {{adminusername | uppercase}}</a>
             <ul class="dropdown-menu">
               <!-- Reverse Caret -->
               <li class="caret"></li>
@@ -82,35 +90,48 @@
     </div>
     <hr />
     <div class="row"> </div>
-    <h2 class="table_heading">Add new State</h2>
+    <h2 class="table_heading">TODO MANGEMENT</h2> 
+   <div class="add_btn_container"> 
+   	<button class="btn btn-success" type="button" ng-click="goto('Addtodo')">Add Todo</button>
+   </div>
     <div class="row">
       <div class="col-sm-9">
         <div class="row">
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading"> </div>
-        <form role="form" class="form-horizontal form-groups-bordered">
-	<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">State Name</label>
-						
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" placeholder="Enter State name" ng-model='state.statename'>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label">Country</label>
-						
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-2" placeholder="Enter Country" ng-model='state.statelocation'>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" class="btn btn_back" ng-click='addState(state)'>Add State</button>
-						</div>
-					</div>
-</form>
+          <table class="table table-bordered table-striped datatable" id="table-2">
+	<thead>
+		<tr>
+			
+			<th>Title</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="task in todos">
+			<td>{{task.todo_title}}</td>
+			<td>{{task.todo_description}}</td>		
+			<td>
+				<a href="" class="btn btn-default btn-sm btn-icon icon-left" ng-click='edit({{task.todo_id}})'>
+					<i class="entypo-pencil"></i>
+					Edit
+				</a>
+				
+				<a href="#" class="btn btn-danger btn-sm btn-icon icon-left" ng-click='del({{task.todo_id}})'>
+					<i class="entypo-cancel"></i>
+					Delete
+				</a>
+				<a href="" class="btn btn-info btn-sm btn-icon icon-left" ng-click='tododata({{task.todo_id}})'>
+					<i class="entypo-info"></i>
+					View
+				</a>
+			</td>
+		</tr>
+		</tbody>
+</table>
             </div>
           </div>
         </div>
@@ -118,7 +139,7 @@
     </div>
     <!-- Footer --> 
   </div>
-  <div id="chat" class="fixed" data-current-user="Art Ramadani" data-order-by-status="1" data-max-chat-history="25">
+  <div id="chat" class="fixed" data-current-user="" data-order-by-status="1" data-max-chat-history="25">
     <div class="chat-inner"> </div>
     <!-- conversation template -->
     <div class="chat-conversation">

@@ -5,6 +5,7 @@ var app = express();
 product = require('./api/product');
 vendor = require('./api/vendor');
 state = require('./api/state');
+todo = require('./api/todo');
 getdetail = require('./api/getdetail');
 municipality=require('./api/municipality');
 housingAssociation=require('./api/housingAssociation');
@@ -13,6 +14,8 @@ adminlogin=require('./api/adminLogin');
 newsFeed=require('./api/newsFeed');
 contact=require('./api/contactdetail');
 submitInput=require('./api/submitinput');
+
+
 // start housing admin
 housingadminlogin=require('./api/H_adminlogin.js');
 services=require('./api/services.js');
@@ -59,6 +62,15 @@ app.post('/api/adminLogin', adminlogin.login);
 // apu link for housing admin panel
 app.post('/api/HousingAdminLogin', housingadminlogin.login);
 app.post('/api/services', services.findAllervices);
+
+//todo actions
+app.get('/api/todolist', todo.findAlltodo);
+app.post('/api/addTodo', todo.createNewTodo);
+app.get('/api/deleteTodo/:id', todo.deleteTodo);
+app.post('/api/updateTodo', todo.updateTodo);
+//app.post('/api/updateTodo', state.updateState);
+app.get('/api/tododetail/:id', todo.tododetail);
+// todo action end
 
 app.listen(5000);
 console.log('Listening on port 5000...'); 

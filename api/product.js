@@ -2,8 +2,8 @@ var http = require('http');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
 	database : 'icefire',
-	user : 'icefire',
-	password : 'ferrari4321',
+     user : 'root',
+	password : '',
 });
 
 connection.connect(function(err) {
