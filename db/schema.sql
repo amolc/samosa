@@ -224,3 +224,43 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Table structure for table `tbl_todo`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_todo` (
+`todo_id` int(11) NOT NULL,
+  `todo_title` varchar(255) NOT NULL,
+  `todo_description` text NOT NULL,
+  `todo_Date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_todo`
+--
+
+INSERT INTO `tbl_todo` (`todo_id`, `todo_title`, `todo_description`, `todo_Date`) VALUES
+(1, 'test test', 'learning nodejs', '2016-05-24'),
+(3, 'leaning nodejs test', 'trying to create crud app', '0000-00-00'),
+(5, 'test again', 'learning nodejs test', '0000-00-00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_todo`
+--
+ALTER TABLE `tbl_todo`
+ ADD PRIMARY KEY (`todo_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_todo`
+--
+ALTER TABLE `tbl_todo`
+MODIFY `todo_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
