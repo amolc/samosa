@@ -20,3 +20,6 @@ cd samosa // Please do go into the samosa directory
 npm install 
  
 npm install 
+
+
+[![Join the chat at https://gitter.im/amolc/samosa](https://badges.gitter.im/amolc/samosa.svg)](https://gitter.im/amolc/samosa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
