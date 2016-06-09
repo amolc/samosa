@@ -38,5 +38,10 @@ config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/Addtodo', {templateUrl: 'partials/super_admin/addTodo.html'});
 	$routeProvider.when('/Edittodo/:id', {templateUrl: 'partials/super_admin/edittodo.html'});
 	$routeProvider.when('/Viewtodo/:id', {templateUrl: 'partials/super_admin/viewtodo.html'});
-   
+
+	$routeProvider.when('/AddPost', {templateUrl: 'partials/super_admin/addpost.html' });
+	$routeProvider.when('/Post', {templateUrl: 'partials/post.html'});
+	$routeProvider.when('/Adminpost', {templateUrl: 'partials/super_admin/post.html'});
+	$routeProvider.when('/Editpost/:id', {templateUrl: 'partials/super_admin/editpost.html'});
+	$routeProvider.when('/Viewpost/:id', {templateUrl: 'partials/super_admin/viewpost.html'});
 }]);

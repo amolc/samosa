@@ -1,0 +1,12 @@
+<div ng-controller="todoController">
+    <ul class="topcoat-list list">
+        <h1>select  your Post</h1>
+        <li ng-repeat="post in posts" class="topcoat-list__item">
+            <a  href="http://localhost:3000/Admin#/Municipality/{{post.post_id}}">
+                <!-- <a ng-click="mun({{state.state_id}})" href="http://localhost:3000/#/Municipality/">  -->
+                {{post.post_title}}
+            </a>
+        </li>
+
+    </ul>
+</div>

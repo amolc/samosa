@@ -6,6 +6,7 @@ product = require('./api/product');
 vendor = require('./api/vendor');
 state = require('./api/state');
 todo = require('./api/todo');
+post = require('./api/post');
 getdetail = require('./api/getdetail');
 municipality=require('./api/municipality');
 housingAssociation=require('./api/housingAssociation');
@@ -59,7 +60,7 @@ app.get('/api/UpdateContact/:id', contact.updateContact);
 app.get('/api/submitInput', submitInput.submitInput);
 app.post('/api/adminLogin', adminlogin.login);
 
-// apu link for housing admin panel
+// api link for housing admin panel
 app.post('/api/HousingAdminLogin', housingadminlogin.login);
 app.post('/api/services', services.findAllervices);
 
@@ -71,6 +72,15 @@ app.post('/api/updateTodo', todo.updateTodo);
 //app.post('/api/updateTodo', state.updateState);
 app.get('/api/tododetail/:id', todo.tododetail);
 // todo action end
+
+// Blog post action
+app.get('/api/postdatalist', post.findAllPost);
+app.get('/api/post', post.findAllPost);
+app.post('/api/addPost', post.createNewPost);
+app.get('/api/deletePost/:id', post.deletePost);
+app.post('/api/updatePost', post.updatePost);
+app.get('/api/postdetail/:id', post.postdetail);
+// Blog post action end
 
 app.listen(5000);
 console.log('Listening on port 5000...'); 
