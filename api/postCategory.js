@@ -9,9 +9,9 @@ var db = mysql.createPool({
  });
 
  var CRUD = require('mysql-crud');
- var postCRUD = CRUD(db, 'tbl_post');
+ var postCRUD = CRUD(db, 'tbl_post_category');
 
-exports.findAllPost = function(req, res) {
+exports.findAllPostCategory = function(req, res) {
 	postCRUD.load({}, function (err, val) {
 		res.jsonp(val);
 	});
@@ -19,38 +19,21 @@ exports.findAllPost = function(req, res) {
 
 /******************for create new post value in to data base*****************/
 
-
-/**
- * @api {post} /addpost Request User information
- * @apiName Post
- * @apiGroup Post
- *
- * @apiParam {Number} id Users unique ID.
- *
- * @apiSuccess {String} firstname Firstname of the User.
- * @apiSuccess {String} lastname  Lastname of the User.
- */
-exports.createNewPost = function (req, res) {
-	var title = req.body.post_title;
-	var content = req.body.post_content;
-	var category = req.body.post_category;
-    console.log(title);
-    console.log(content);
-    console.log(category);
+exports.createNewPostCategory = function (req, res) {
 	var datetime = new Date();
-
-	postCRUD.create({'post_title': title, 'post_content': content, 'category_id': category, 'created_on': datetime}, function (err, vals) {
+	var content = req.body.postcategory_title;
+	postCRUD.create({'category_name': content, 'created_datetime': datetime}, function (err, vals) {
 		console.log(err);
 		if (parseInt(vals.affectedRows) > 0) {
 			var resdata = {
 				status: true,
-				message: 'Post successfully added'
+				message: 'Category successfully added'
 			};
 			res.jsonp(resdata);
 		} else {
 			var resdata = {
 				status: false,
-				message: 'post not added '
+				message: 'Category not added '
 			};
 			res.jsonp(resdata);
 		}
@@ -62,13 +45,13 @@ exports.createNewPost = function (req, res) {
 
 /******************for  delete data from  data base*****************/
 
-exports.deletePost = function(req, res) {
-	var post_id=parseInt(req.params.id);
-	postCRUD.destroy({'post_id' : post_id}, function (err, vals) {
+exports.deletePostCategory = function(req, res) {
+	var id=parseInt(req.params.id);
+	postCRUD.destroy({'id' : id}, function (err, vals) {
 		console.log(vals.affectedRows);
 		if(parseInt(vals.affectedRows)>0){
 			var resdata={status:true,
-				message:'post successfully deleted'};
+				message:'Category successfully deleted'};
 			res.jsonp(resdata);
 		}else{
 			var resdata={status:false,
@@ -82,11 +65,10 @@ exports.deletePost = function(req, res) {
 
 /******************for  update data in data base********/
 
-exports.updatePost = function(req, res) {
-	var title=req.body.post_title;
-	var content=req.body.post_content;
-	var post_id=req.body.post_id;
-	postCRUD.update({'post_id' : post_id}, {post_title:title, post_content:content}, function (err, vals) {
+exports.updatePostCategory = function(req, res) {
+	var content=req.body.category_name;
+	var id=req.body.id;
+	postCRUD.update({'id' : id}, {'category_name': content }, function (err, vals) {
 		if(parseInt(vals.affectedRows)>0){
 			var resdata={status:true,
 				message:'post successfully updated'};
@@ -103,10 +85,10 @@ exports.updatePost = function(req, res) {
 
 /******************start Details ***************/
 
-exports.postdetail = function(req, res) {
+exports.postdetailCategory = function(req, res) {
 	var id = parseInt(req.params.id);
     console.log(id);
-	postCRUD.load({post_id: id}, function (err, val) {
+	postCRUD.load({id: id}, function (err, val) {
 		res.jsonp(val[0]);
 	});
 };

@@ -1,29 +1,10 @@
-function adminPostController($rootScope,$scope, $location, $http) {
-    $rootScope.postForMun;
+function adminPostCategoryController($rootScope,$scope, $location, $http) {
+    $rootScope.categoryForMun;
     $scope.adminusername=loginuser;
-    $scope.posts = {};
-    $scope.post={
-        post_title :'',
-        post_content :'',
-        post_category : ''
-    };
     $scope.categories = {};
     $scope.category={
         category_title :'',
     };
-
-    $http.get(baseURL + 'post').success(function(res) {
-        $scope.response = res;
-        console.log(res);
-        if (res.status == 'false') {
-            alert(res.message);
-        } else {
-            $scope.posts=res;
-            $rootScope.postForMun=res;
-        }
-    }).error(function() {
-        alert("Please check your internet connection or data source..");
-    });
 
     $http.get(baseURL + 'postcategory').success(function(res) {
         $scope.response = res;
@@ -39,12 +20,12 @@ function adminPostController($rootScope,$scope, $location, $http) {
     });
 
     $scope.del=function(id){
-        $http.get(baseURL + 'deletePost/'+id).success(function(res) {
+        $http.get(baseURL + 'deletePostCategory/'+id).success(function(res) {
             $scope.response = res;
             if (res.status == false) {
                 alert(res.message);
             } else {
-                $location.path('/Adminpost');
+                $location.path('/Adminpostcategory');
             }
 
         }).error(function() {
@@ -52,18 +33,14 @@ function adminPostController($rootScope,$scope, $location, $http) {
         });
     };
 
-    $scope.AddPost=function(post){
-        console.log(post.post_category);
+    $scope.AddPostCategory=function(postcategory){
+        console.log(postcategory);
 
-        if (post.post_title == '') {
-            alert('Enter Title');
-        } else if(post.post_content == ''){
-            alert('Enter Content');
-        } else if(post.post_category == '') {
-            alert('Please choose category');
+        if (postcategory.postcategory_title == '') {
+            alert('Enter Category');
         }
         else {
-            $http.post(baseURL + 'addPost', post).success(function(res) {
+            $http.post(baseURL + 'addPostCategory', postcategory).success(function(res) {
                 $scope.response = res;
                 console.log(res);
                 if (res.status == false) {
@@ -71,7 +48,7 @@ function adminPostController($rootScope,$scope, $location, $http) {
                 }
                 else {
                     alert(res.message);
-                    $location.path("/AddPost");
+                    $location.path("/AddPostCategory");
                 }
             }).error(function() {
                 alert("Please check your internet connection or data source..");
@@ -84,11 +61,11 @@ function adminPostController($rootScope,$scope, $location, $http) {
     };
 
     $scope.edit=function(id){
-        $location.path('/Editpost/'+id);
+        $location.path('/Editpostcategory/'+id);
     };
 
-    $scope.postdata=function(id){
-        $location.path('/Viewpost/'+id);
+    $scope.postcategorydetail=function(id){
+        $location.path('/Viewpostcategory/'+id);
     };
 
     // $scope.viewdata=function(id){
@@ -105,32 +82,30 @@ function adminPostController($rootScope,$scope, $location, $http) {
     };
 
 }
-function admineditpostController($rootScope,$scope, $location, $http,$routeParams) {
+function admineditpostCategoryController($rootScope,$scope, $location, $http,$routeParams) {
     $scope.adminusername=loginuser;
-    $scope.post={
+    $scope.postcategory={
     };
     var id=$routeParams.id;
-    $http.get(baseURL + 'postdetail/'+id).success(function(res) {
+    $http.get(baseURL + 'postcategory/'+id).success(function(res) {
         console.log(res);
         $scope.response = res;
-        $scope.post=res;
+        $scope.postcategory=res;
     }).error(function() {
         alert("Please check your internet connection or data source..");
     });
 
-    $scope.editPost=function(post){
-        if (post.post_title == '') {
-            alert('Enter a Title ');
-        } else if(post.post_content == ''){
-            alert('Enter Content ');
+    $scope.editPost=function(postcategory){
+        if (postcategory.category_name == '') {
+            alert('Enter a Category ');
         } else {
-            $http.post(baseURL + 'updatePost', post).success(function(res) {
+            $http.post(baseURL + 'updatePostCategory', postcategory).success(function(res) {
                 $scope.response = res;
                 console.log(res);
                 if (res.status == false) {
                     alert(res.message);
                 } else {
-                    $location.path("/Adminpost");
+                    $location.path("/Adminpostcategory");
                 }
             }).error(function() {
                 alert("Please check your internet connection or data source..");

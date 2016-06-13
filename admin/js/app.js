@@ -44,4 +44,9 @@ config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/Adminpost', {templateUrl: 'partials/super_admin/post.html'});
 	$routeProvider.when('/Editpost/:id', {templateUrl: 'partials/super_admin/editpost.html'});
 	$routeProvider.when('/Viewpost/:id', {templateUrl: 'partials/super_admin/viewpost.html'});
+
+	$routeProvider.when('/AddPostCategory', {templateUrl: 'partials/super_admin/addpostcategory.html' });
+	$routeProvider.when('/Adminpostcategory', {templateUrl: 'partials/super_admin/adminPostCategory.html' });
+	$routeProvider.when('/Editpostcategory/:id', {templateUrl: 'partials/super_admin/editpostcategory.html'});
+	$routeProvider.when('/Viewpostcategory/:id', {templateUrl: 'partials/super_admin/viewpostcategory.html'});
 }]);

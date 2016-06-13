@@ -7,6 +7,7 @@ vendor = require('./api/vendor');
 state = require('./api/state');
 todo = require('./api/todo');
 post = require('./api/post');
+postcategory = require('./api/postCategory');
 getdetail = require('./api/getdetail');
 municipality=require('./api/municipality');
 housingAssociation=require('./api/housingAssociation');
@@ -26,6 +27,7 @@ app.use(express.bodyParser());
 app.use('/admin', express.static(__dirname + '/admin'));
 app.use('/mobile', express.static(__dirname + '/mobile/www'));
 app.use('/housingadmin', express.static(__dirname + '/housingadmin'));
+app.use('/docs', express.static(__dirname + '/apidocs'));
 
 
 app.get('/api/state', state.findAllstate);
@@ -81,6 +83,13 @@ app.get('/api/deletePost/:id', post.deletePost);
 app.post('/api/updatePost', post.updatePost);
 app.get('/api/postdetail/:id', post.postdetail);
 // Blog post action end
+
+// Post Category for Blog //
+app.get('/api/postcategory', postcategory.findAllPostCategory);
+app.post('/api/addPostCategory', postcategory.createNewPostCategory);
+app.get('/api/deletePostCategory/:id', postcategory.deletePostCategory);
+app.post('/api/updatePostCategory', postcategory.updatePostCategory);
+// Post Category for Blog end //
 
 app.listen(5000);
 console.log('Listening on port 5000...'); 

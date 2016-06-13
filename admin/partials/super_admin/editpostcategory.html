@@ -1,9 +1,9 @@
-<div ng-controller="adminPostController">
+<div ng-controller="admineditpostCategoryController">
     <div class="page-container">
         <div class="sidebar-menu">
             <header class="logo-env">
                 <!-- logo -->
-                <div class="logo"> <a> <img class="logoimage" src="css/assets/images/logo.png" alt="" /> </a> </div>
+                <div class="logo"> <a href="../main/index.html"> <img class="logoimage" src="css/assets/images/logo.png" alt="" /> </a> </div>
                 <!-- logo collapse icon -->
                 <div class="sidebar-collapse"> <a href="" class="sidebar-collapse-icon with-animation" ng-click="showhide('main-menu')"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
                     <i class="entypo-menu"></i> </a> </div>
@@ -17,13 +17,14 @@
                         <li> <a ng-click="showhide('inner_submenu_state')"> <i class="entypo-menu"></i><span>States</span></a>
                             <ul id="inner_submenu_state" style="display:none;">
                                 <li class="active">
-                                    <a ng-click="goto('Addstate')"><span>Add State</span></a>
+                                    <a  ng-click="goto('Addstate')"><span>Add State</span></a>
                                 </li>
                                 <li class="active">
-                                    <a ng-click="goto('Admin')"><span>Manage State</span></a>
+                                    <a  ng-click="goto('Admin')"><span>Manage State</span></a>
                                 </li>
                             </ul>
                         </li>
+
                         <li> <a ng-click="showhide('inner_submenu_todo')"> <i class="entypo-menu"></i><span>Todo</span></a>
                             <ul id="inner_submenu_todo" style="display:none;">
                                 <li class="active">
@@ -38,31 +39,20 @@
                         <li class="active"> <a href="" ng-click="showhide('inner_submenu_Muni')"> <i class="entypo-menu"></i><span>Municipalty</span></a>
                             <ul id="inner_submenu_Muni" style="display:none;">
                                 <li class="active">
-                                    <a ng-click="goto('Addmunicipality')"><span>Add Municipalty</span></a>
+                                    <a  ng-click="goto('Addmunicipality')"><span>Add Municipalty</span></a>
                                 </li>
                                 <li class="active">
-                                    <a  ng-click="goto('Adminmunicipality')"><span>Manage municipality</span></a>
+                                    <a  ng-click="goto('Adminmunicipality')"><span>Manage Municipalty</span></a>
                                 </li>
                             </ul>
                         </li>
                         <li> <a ng-click="showhide('inner_submenu_housingAss')"> <i class="entypo-menu"></i><span>Housing Association</span></a>
                             <ul id="inner_submenu_housingAss" style="display:none;">
                                 <li class="active">
-                                    <a ng-click="goto('AddHousingAss')"><span>Add Housing Association</span></a>
+                                    <a ng-click="goto('Addstate')"><span>Add Housing Association</span></a>
                                 </li>
                                 <li class="active">
-                                    <a ng-click="goto('HousingAssociation')"><span>Manage Housing Association</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a ng-click="showhide('inner_submenu_blog')"> <i
-                                class="entypo-menu"></i><span>Blog</span></a>
-                            <ul id="inner_submenu_blog" style="display:none;">
-                                <li class="active">
-                                    <a ng-click="goto('AddPost')"><span>Add Post</span></a>
-                                </li>
-                                <li class="active">
-                                    <a ng-click="goto('Adminpost')"><span>Manage Posts</span></a>
+                                    <a ng-click="goto('Admin')"><span>Manage Housing Association</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -77,7 +67,7 @@
                     <ul class="user-info pull-left pull-none-xsm">
                         <!-- Profile Info -->
                         <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
-                            <a ng-model='adminusername' class="dropdown-toggle" data-toggle="dropdown">Welcome  {{adminusername | uppercase}}</a>
+                            <a ng-model='adminusername' class="dropdown-toggle" data-toggle="dropdown"> <img src="../../assets/images/thumb-1.png" alt="" class="img-circle" / >{{adminusername}}</a>
                             <ul class="dropdown-menu">
                                 <!-- Reverse Caret -->
                                 <li class="caret"></li>
@@ -101,44 +91,26 @@
             </div>
             <hr />
             <div class="row"> </div>
-            <h2 class="table_heading">POST MANAGEMENT</h2>
-            <div class="add_btn_container">
-                <button class="btn btn-success" type="button" ng-click="goto('AddPost')">Add Post</button>
-            </div>
+            <h2 class="table_heading">Edit Post</h2>
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading"> </div>
-                                <table class="table table-bordered table-striped datatable" id="table-2">
-                                    <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    <tr ng-repeat="post in posts">
-                                        <td>{{post.post_title}}</td>
-                                        <td>
-                                            <a href="" class="btn btn-default btn-sm btn-icon icon-left" ng-click='edit({{post.post_id}})'>
-                                                <i class="entypo-pencil"></i>
-                                                Edit
-                                            </a>
-                                            <a href="#" class="btn btn-danger btn-sm btn-icon icon-left" ng-click='del({{post.post_id}})'>
-                                                <i class="entypo-cancel"></i>
-                                                Delete
-                                            </a>
-                                            <a href="" class="btn btn-info btn-sm btn-icon icon-left" ng-click='postdata({{post.post_id}})'>
-                                                <i class="entypo-info"></i>
-                                                View
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <form role="form" class="form-horizontal form-groups-bordered">
+                                    <div class="form-group">
+                                        <label for="field-1" class="col-sm-3 control-label">Title</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="field-1" placeholder="Enter Title" ng-model='postcategory.category_name'>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-5">
+                                            <button type="submit" class="btn btn_back" ng-click='editPost(postcategory)'>Edit Post Category</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -146,7 +118,7 @@
             </div>
             <!-- Footer -->
         </div>
-        <div id="chat" class="fixed" data-current-user="" data-order-by-status="1" data-max-chat-history="25">
+        <div id="chat" class="fixed" data-current-user="Art Ramadani" data-order-by-status="1" data-max-chat-history="25">
             <div class="chat-inner"> </div>
             <!-- conversation template -->
             <div class="chat-conversation">

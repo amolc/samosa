@@ -265,7 +265,6 @@ ALTER TABLE `tbl_todo`
 ALTER TABLE `tbl_todo`
 MODIFY `todo_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `tbl_post`
 --
@@ -274,7 +273,26 @@ CREATE TABLE IF NOT EXISTS `tbl_post` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `post_title` varchar(50) NOT NULL,
   `post_content` varchar(1000) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
   `created_on` datetime NOT NULL,
-  `modifies_on` datetime NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  `modified_on` datetime NOT NULL,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `tbl_post_category`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_post_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` text NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_datetime` datetime NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  `modified_datetime` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
