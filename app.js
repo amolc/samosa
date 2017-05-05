@@ -5,6 +5,8 @@ var app = express();
 product = require('./api/product');
 vendor = require('./api/vendor');
 state = require('./api/state');
+staff = require('./api/staff');
+member = require('./api/member');
 todo = require('./api/todo');
 post = require('./api/post');
 postcategory = require('./api/postCategory');
@@ -16,6 +18,7 @@ adminlogin=require('./api/adminLogin');
 newsFeed=require('./api/newsFeed');
 contact=require('./api/contactdetail');
 submitInput=require('./api/submitinput');
+order=require('./api/order');
 
 
 // start housing admin
@@ -28,13 +31,34 @@ app.use('/admin', express.static(__dirname + '/admin'));
 app.use('/mobile', express.static(__dirname + '/mobile/www'));
 app.use('/housingadmin', express.static(__dirname + '/housingadmin'));
 app.use('/docs', express.static(__dirname + '/apidocs'));
+app.use('/desibites', express.static(__dirname + '/desibites'));
 
 
 app.get('/api/state', state.findAllstate);
 app.post('/api/addState', state.createNewState);
 app.get('/api/deleteState/:id', state.deleteState);
 app.post('/api/updateState', state.updateState);
-app.get('/api/getdetail/:id', getdetail.statedetail);
+            
+app.get('/api/getstaffdetail/:id', getdetail.staffdetail);
+app.get('/api/staff/:id', staff.findStaff);
+app.get('/api/allstaff', staff.allStaff);
+app.post('/api/addStaff', staff.createNewStaff);
+app.get('/api/deleteStaff/:id', staff.deleteStaff);
+app.post('/api/updateStaff', staff.updateStaff);
+
+app.get('/api/getmemberdetail/:id', getdetail.memberdetail);
+app.get('/api/member/:id', member.findMember);
+app.get('/api/allmember', member.allmember);
+app.post('/api/addMember', member.createNewMember);
+app.get('/api/deleteMember/:id', member.deleteMember);
+app.post('/api/updateMember', member.updateMember);
+
+app.get('/api/order/:id', order.findOrder);
+app.get('/api/allorder', order.allorder);
+app.post('/api/addOrder', order.createNewOrder);
+app.get('/api/deleteOrder/:id', order.deleteOrder);
+app.post('/api/updateOrder', order.updateOrder);
+
 app.get('/api/getmundetail/:id', getdetail.municipalitydetail);
 app.get('/api/municipality/:id', municipality.findMunicipality);
 app.get('/api/allmunicipality', municipality.allMunicipality);

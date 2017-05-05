@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="orderApp" ng-controller="orderController">
+  <form role="form">
+    <table>
+
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" ng-model="name"></td>  
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" ng-model="email"></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><input type="text" ng-model="address"></td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td><input type="text" ng-model="phoneNumber"></td>
+        </tr>
+        <tr>
+            <td>Number of crates/dozen:</td>
+            <td><input type="text" ng-model="orderQty"></td>
+        </tr>
+    </table>
+    
+    <input type='button' value='submit' ng-click='addOrder()'>
+    </form>
+</div>
+
+<script>
+
+        var orderApp = angular.module("orderApp", []);
+
+        orderApp.controller('orderController', function($scope, $http) {
+
+             
+            $scope.addOrder=function(){
+
+                // console.log($scope.name);
+                // console.log($scope.email);
+                // console.log($scope.address);
+                // console.log($scope.phoneNumber);
+                // console.log($scope.orderQty);
+                $scope.order = {};
+                $scope.order.name = $scope.name ;
+                $scope.order.email = $scope.email ;
+                $scope.order.address = $scope.address ;
+                $scope.order.phoneNumber = $scope.phoneNumber ;
+                $scope.order.orderQty = $scope.orderQty ;
+
+                //console.log($scope.order);
+
+                $http.post('http://localhost:5000/api/addOrder',$scope.order).success(function(res) {
+                    $scope.response = res;
+                    //console.log(res);
+                    if (res.status == false) {
+                        console.log(res.message);
+                    } else {
+                        console.log(res.message);
+                        // $location.path("/Adminmunicipality");
+                    }
+                }).error(function() {
+                    alert("Please check your internet connection or data source..");
+                });
+
+            };
+
+         });
+
+/* function orderController($rootScope,$scope, $location, $http) 
+{
+	//  $scope.adminusername=loginuser;
+     $rootScope.orderitems = [];
+		$scope.order={
+		 name :'',
+		 email :'',
+         address :'',
+         phoneNumber :'',
+         qty :''
+        };
+
+
+        console.log($scope.name);
+
+        $scope.addOrder=function(){
+        //$scope.order.stateID=$scope.selectedItem.state_id;
+        if ($scope.order.name == null) 
+        {
+            alert('Enter a order Name ');
+        }
+        else if($scope.order.email == null)
+        {
+            alert('Enter a Email Name');
+        }
+        else if($scope.order.address == null)
+        {
+            alert('select state name ');
+        }
+        else if($scope.order.email == null)
+        {
+            alert('select state name ');
+        }
+        else if($scope.order.email == null)
+        {
+            alert('select state name ');
+        }
+        else 
+        {  
+            // $http.post(baseURL + 'addMunicipality',$scope.mun).success(function(res) {
+            //     $scope.response = res;
+            //     console.log(res);
+            //     if (res.status == false) {
+            //         alert(res.message);
+            //     } else {
+            //         alert(res.message);
+            //         $location.path("/Adminmunicipality");
+            //     }
+            // }).error(function() {
+            //     alert("Please check your internet connection or data source..");
+            // });
+        }
+    };
+
+}; */
+
+
+
+			
+// $scope.goto=function(page){
+//     $location.path(page);	
+// };
+// $scope.edit=function(id){
+//     $location.path('/Editmunicipality/'+id);	
+// };
+// $scope.view=function(id){
+//     $location.path('/Viewmunicipality/'+id);	
+// };
+// $scope.showhide = function(id){
+// 	if(document.getElementById(id).style.display == 'none'){
+//     document.getElementById(id).style.display = 'block';
+//    }else{
+//    	document.getElementById(id).style.display = 'none';
+//    }
+//    };
+	
+// }
+</script>
+
+</body>
+</html>

@@ -1,10 +1,10 @@
 var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
-	database : 'icefire',
-     user : 'root',
-  password : '',
-    host :'localhost',
+	database : 'rujia',
+     user : 'ftdev',
+  password : '10gXWOqeaf',
+    host :'apps.fountaintechies.com',
  });
 
  var CRUD = require('mysql-crud');
@@ -33,6 +33,23 @@ var db = mysql.createPool({
  	  	// res.jsonp(val[0]);
  	  // });  
  // };
+  exports.memberdetail = function(req, res) {
+	var id=parseInt(req.params.id);
+	 		 var query = "SELECT tbl_member.member_id , tbl_member.member_name ,  tbl_state.state_name FROM tbl_member INNER JOIN tbl_state ON tbl_member.state_id = tbl_state.state_id where  tbl_member.member_id="+id;
+              db.query(query, function(err, rows){
+              res.jsonp(rows[0]);
+   });
+ };  
+
+exports.staffdetail = function(req, res) {
+	var id=parseInt(req.params.id);
+	 		 var query = "SELECT tbl_staff.staff_id , tbl_staff.staff_name ,  tbl_state.state_name FROM tbl_staff INNER JOIN tbl_state ON tbl_staff.state_id = tbl_state.state_id where  tbl_staff.staff_id="+id;
+              db.query(query, function(err, rows){
+              res.jsonp(rows[0]);
+   });
+ };  
+
+
  exports.municipalitydetail = function(req, res) {
 	var id=parseInt(req.params.id);
 	 		 var query = "SELECT tbl_municipality.m_id , tbl_municipality.m_name ,  tbl_state.state_name FROM tbl_municipality INNER JOIN tbl_state ON tbl_municipality.state_id = tbl_state.state_id where  tbl_municipality.m_id="+id;

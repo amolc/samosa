@@ -47,6 +47,32 @@ INSERT INTO `admin_user` (`id`, `name`, `password`, `email`) VALUES
 -- Table structure for table `tbl_category_description`
 --
 
+CREATE TABLE IF NOT EXISTS `tbl_order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `contact_name` varchar(20) NOT NULL,
+  `contact_email` varchar(20) NOT NULL,
+  `contact_address` varchar(50) NOT NULL,
+  `contact_phone` varchar(20) NOT NULL,
+  `contact_qty` varchar(11) NOT NULL,
+  PRIMARY KEY (`order_id`)
+
+)ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Dumping data for table `tbl_category_description`
+--
+
+INSERT INTO tbl_order (order_id, contact_name, contact_email, contact_address, contact_phone, contact_qty) VALUES
+(1, 'Bob Smith', 'bobsmith@gmail.com', '43 Gangsa Road', '99998788', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_category_description`
+--
+
 CREATE TABLE IF NOT EXISTS `tbl_category_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type_id` int(11) NOT NULL,
@@ -225,9 +251,50 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `tbl_member`
+--
+
+CREATE TABLE `tbl_member` (
+  `member_id` int(11) NOT NULL,
+  `member_name` varchar(20) NOT NULL,
+  `state_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_member`
+--
+
+INSERT INTO `tbl_member` (`member_id`, `member_name`, `state_id`) VALUES
+(1, 'Mary Wong', 1),
+(2, 'Kevin Jones', 1),
+(3, 'David Lim', 1);
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `tbl_todo`
 --
+
+CREATE TABLE `tbl_staff` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(20) NOT NULL,
+  `state_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_student`
+--
+
+
+INSERT INTO `tbl_staff` (`staff_id`, `staff_name`, `state_id`) VALUES
+(3, 'Lee Yeow Leong', 1),
+(5, 'Kevin Steppe', 1),
+(7, 'Vandana', 1);
+
+-- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `tbl_todo` (
 `todo_id` int(11) NOT NULL,

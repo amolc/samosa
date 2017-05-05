@@ -1,10 +1,10 @@
 var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
-	database : 'icefire',
-     user : 'root',
-	password : '',
-    host :'localhost',
+	database : 'rujia',
+     user : 'ftdev',
+	password : '10gXWOqeaf',
+    host :'apps.fountaintechies.com',
  });
  var CRUD = require('mysql-crud');
  exports.login = function(req, res) {
@@ -20,7 +20,7 @@ var db = mysql.createPool({
  	  		resdata.message='successfully login welcome to admin panel.';  		
  	  	}else{
  	  		resdata.status=false;
- 	  		resdata.message='wrong username or password please enter a valid ';
+ 	  		resdata.message='wrong username or password, please try again!  ';
  	  	}
  	  	  
  	  	res.jsonp(resdata);
