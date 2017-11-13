@@ -1,10 +1,10 @@
 var http = require('http');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-	database : 'rujia',
-     user : 'ftdev',
-	password : '10gXWOqeaf',
-	host :'apps.fountaintechies.com',
+	database : process.env.DB_NAME,
+    user : process.env.DB_USER,
+	password : process.env.DB_PASSWORD,
+	host :process.env.DB_HOST,
 });
 
 connection.connect(function(err) {
